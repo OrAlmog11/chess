@@ -57,7 +57,25 @@ public class BoardGame extends View {
         Bitmap b = BitmapFactory.decodeResource(getResources(),R.drawable.white_pawn);
         b = Bitmap.createScaledBitmap(b,w,w,true);
         Pawn p = new Pawn(b,"White");
-        squares[0][0].setPiece(p);
+        squares[1][0].setPiece(p);
+        squares[1][1].setPiece(p);
+        squares[1][2].setPiece(p);
+        squares[1][3].setPiece(p);
+        squares[1][4].setPiece(p);
+        squares[1][5].setPiece(p);
+        squares[1][6].setPiece(p);
+        squares[1][7].setPiece(p);
+        Bitmap c = BitmapFactory.decodeResource(getResources(),R.drawable.black_pawn);
+        c = Bitmap.createScaledBitmap(c,w,w,true);
+        Pawn p2 = new Pawn(c,"Black");
+        squares[6][0].setPiece(p2);
+        squares[6][1].setPiece(p2);
+        squares[6][2].setPiece(p2);
+        squares[6][3].setPiece(p2);
+        squares[6][4].setPiece(p2);
+        squares[6][5].setPiece(p2);
+        squares[6][6].setPiece(p2);
+        squares[6][7].setPiece(p2);
 
     }
 

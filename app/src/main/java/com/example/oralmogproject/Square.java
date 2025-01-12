@@ -29,7 +29,7 @@ public class Square extends Shape{
         canvas.drawRect(x,y,x+w,y+h,p);
         if(piece != null)
         {
-            piece.draw(canvas);
+            piece.draw(canvas,x,y);
         }
     }
 

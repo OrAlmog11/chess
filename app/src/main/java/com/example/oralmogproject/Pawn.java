@@ -13,9 +13,9 @@ public class Pawn extends Piece{
 
     }
 
-    public void draw(Canvas canvas)
+    public void draw(Canvas canvas, int x, int y)
     {
-        super.draw(canvas);
+        super.draw(canvas,x,y);
     }
 
 

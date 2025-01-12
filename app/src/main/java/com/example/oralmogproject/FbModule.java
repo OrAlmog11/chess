@@ -1,3 +1,4 @@
+/*
 package com.example.oralmogproject;
 
 import android.content.Context;
@@ -54,3 +55,4 @@ public class FbModule {
         myRef.setValue(ball);
     }
 }
+*/

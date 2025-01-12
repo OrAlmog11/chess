@@ -10,8 +10,8 @@ public class Piece {
         this.bitmap = bitmap;
     }
 
-    public void draw(Canvas canvas)
+    public void draw(Canvas canvas, int x, int y)
     {
-        canvas.drawBitmap(bitmap,0,0,null);
+        canvas.drawBitmap(bitmap,x,y,null);
     }
 }
