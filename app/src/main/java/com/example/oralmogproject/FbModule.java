@@ -16,6 +16,7 @@ public class FbModule {
 
     FirebaseDatabase database;
     Context context;
+
     ArrayList<Board> Board;
 
     public FbModule(Context context, ArrayList<Ball> balls)
