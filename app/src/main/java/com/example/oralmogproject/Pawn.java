@@ -8,7 +8,7 @@ public class Pawn extends Piece{
 
 
     public Pawn(Bitmap b, String color) {
-        super(b);
+        super(b, color);
 
 
     }

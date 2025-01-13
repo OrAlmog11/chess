@@ -8,7 +8,7 @@ public class Bishop extends Piece{
 
 
     public Bishop(Bitmap DD, String color) {
-        super(DD);
+        super(DD,color);
 
 
     }

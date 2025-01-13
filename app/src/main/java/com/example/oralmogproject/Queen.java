@@ -8,7 +8,7 @@ public class Queen extends Piece{
 
 
     public Queen(Bitmap DD, String color) {
-        super(DD);
+        super(DD,color);
 
 
     }

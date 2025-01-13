@@ -23,8 +23,13 @@ public class Square extends Shape{
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
-    public Piece getPiece() {
-        return this.piece;
+
+    public String takenByColor(){
+        if (this.piece == null)
+            return null;
+        else
+            return this.piece.getColor();
+
     }
 
     public void draw(Canvas canvas)

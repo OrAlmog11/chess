@@ -8,7 +8,7 @@ public class Rook extends Piece{
 
 
     public Rook(Bitmap bb, String color) {
-        super(bb);
+        super(bb,color);
 
 
     }

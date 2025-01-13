@@ -8,7 +8,7 @@ public class Knight extends Piece{
 
 
     public Knight(Bitmap DD, String color) {
-        super(DD);
+        super(DD,color);
 
 
     }

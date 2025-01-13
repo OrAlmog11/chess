@@ -8,7 +8,7 @@ public class King extends Piece{
 
 
     public King(Bitmap DD, String color) {
-        super(DD);
+        super(DD,color);
 
 
     }

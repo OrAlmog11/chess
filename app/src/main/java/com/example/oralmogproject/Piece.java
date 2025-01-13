@@ -5,9 +5,15 @@ import android.graphics.Canvas;
 
 public class Piece {
     protected Bitmap bitmap;
+    protected String color;
 
-    public Piece(Bitmap bitmap) {
+    public Piece(Bitmap bitmap, String color) {
         this.bitmap = bitmap;
+        this.color = color;
+    }
+
+    public String getColor(){
+        return this.color;
     }
 
     public void draw(Canvas canvas, int x, int y)
