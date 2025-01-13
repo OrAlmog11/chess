@@ -120,7 +120,7 @@ public class BoardGame extends View {
         squares[7][2].setPiece(b2);
         squares[7][5].setPiece(b2);
 
-
+        squares[4][4].setPiece(b2);
 
 
     }
