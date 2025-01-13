@@ -23,6 +23,9 @@ public class Square extends Shape{
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
+    public Piece getPiece() {
+        return this.piece;
+    }
 
     public void draw(Canvas canvas)
     {

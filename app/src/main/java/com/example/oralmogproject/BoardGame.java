@@ -17,7 +17,7 @@ public class BoardGame extends View {
     private Context context;
     private Square[][] squares;
     private Coin coin;
-    private final int a = 1, b = 2, c = 3, d = 4, e = 5, f = 6, g = 7, h = 8;
+    private final int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6, h = 7;
 
     private final int NUM_OF_SQUARES = 8;
 
@@ -76,6 +76,18 @@ public class BoardGame extends View {
         squares[6][5].setPiece(p2);
         squares[6][6].setPiece(p2);
         squares[6][7].setPiece(p2);
+        Bitmap bb = BitmapFactory.decodeResource(getResources(),R.drawable.white_rook);
+        bb = Bitmap.createScaledBitmap(bb,w,w,true);
+        Rook r = new Rook(bb,"White");
+        squares[0][0].setPiece(r);
+        squares[0][7].setPiece(r);
+        Bitmap aa = BitmapFactory.decodeResource(getResources(),R.drawable.black_rook);
+        aa = Bitmap.createScaledBitmap(aa,w,w,true);
+        Rook r2 = new Rook(aa,"Black");
+        squares[7][0].setPiece(r2);
+        squares[7][7].setPiece(r2);
+
+
 
     }
 

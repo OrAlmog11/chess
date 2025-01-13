@@ -1,4 +1,22 @@
 package com.example.oralmogproject;
 
-public class Rook {
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+
+
+public class Rook extends Piece{
+
+
+    public Rook(Bitmap bb, String color) {
+        super(bb);
+
+
+    }
+
+    public void draw(Canvas canvas, int x, int y)
+    {
+        super.draw(canvas,x,y);
+    }
+
+
 }
