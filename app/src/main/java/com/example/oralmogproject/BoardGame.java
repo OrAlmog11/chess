@@ -86,6 +86,15 @@ public class BoardGame extends View {
         Rook r2 = new Rook(aa,"Black");
         squares[7][0].setPiece(r2);
         squares[7][7].setPiece(r2);
+        Bitmap DD = BitmapFactory.decodeResource(getResources(),R.drawable.white_king);
+        DD = Bitmap.createScaledBitmap(DD,w,w,true);
+        King k = new King(DD,"Black");
+        squares[0][3].setPiece(k);
+        Bitmap D = BitmapFactory.decodeResource(getResources(),R.drawable.black_king);
+        D = Bitmap.createScaledBitmap(D,w,w,true);
+        King k2 = new King(D,"Black");
+        squares[7][3].setPiece(k2);
+
 
 
     }
@@ -125,13 +134,13 @@ public class BoardGame extends View {
                     if(j%2 == 0)
                         color = Color.WHITE;
                     else
-                        color = Color.BLACK;
+                        color = Color.GRAY;
                     
                 }
                 else
                 {   // Odd lines   שורות אי זוגיות
                     if(j%2 == 0)
-                        color = Color.BLACK;
+                        color = Color.GRAY;
                     else
                         color = Color.WHITE;
                 }
