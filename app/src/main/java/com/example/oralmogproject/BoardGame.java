@@ -88,7 +88,6 @@ public class BoardGame extends View {
         squares[7][7].setPiece(r2);
 
 
-
     }
 
     private void drawCoin(Canvas canvas) {
