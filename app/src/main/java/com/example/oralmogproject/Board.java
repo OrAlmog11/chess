@@ -1,2 +1,3 @@
-package com.example.oralmogproject;public class Board {
+package com.example.oralmogproject;
+public class Board {
 }
