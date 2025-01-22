@@ -5,11 +5,13 @@ import android.graphics.Canvas;
 
 
 public class Queen extends Piece{
+    private int x;
+    private int y;
 
-
-    public Queen(Bitmap DD, String color) {
+    public Queen(Bitmap DD, String color, int x, int y) {
         super(DD,color);
-
+        this.x = x;
+        this.y = y;
 
     }
 

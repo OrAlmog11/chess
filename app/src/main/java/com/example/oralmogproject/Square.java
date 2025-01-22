@@ -20,6 +20,12 @@ public class Square extends Shape{
         piece = null;
     }
 
+    public int getX(){
+        return this.x;
+    }
+    public int getY(){
+        return this.y;
+    }
     public void setPiece(Piece piece) {
         this.piece = piece;
     }

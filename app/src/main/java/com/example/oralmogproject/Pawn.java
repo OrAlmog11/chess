@@ -6,10 +6,12 @@ import android.graphics.Canvas;
 
 public class Pawn extends Piece{
 
-
-    public Pawn(Bitmap b, String color) {
+    private int x;
+    private int y;
+    public Pawn(Bitmap b, String color, int x, int y) {
         super(b, color);
-
+        this.x = x;
+        this.y = y;
 
     }
 
