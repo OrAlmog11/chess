@@ -16,6 +16,8 @@ public class BoardGame extends View {
     private Square[][] squares;
     private Coin coin;
     private final int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6, h = 7;
+    private int currX,currY,x1,y1,x2,y2;
+    private Piece tempPiece;
 
     private final int NUM_OF_SQUARES = 8;
 
@@ -53,14 +55,14 @@ public class BoardGame extends View {
         int w = canvas.getWidth()/NUM_OF_SQUARES;
         Bitmap wp = BitmapFactory.decodeResource(getResources(),R.drawable.white_pawn);
         wp = Bitmap.createScaledBitmap(wp,w,w,true);
-        Pawn wp1 = new Pawn(wp,"White",squares[1][0].getX(),squares[1][0].getY());
-        Pawn wp2 = new Pawn(wp,"White",squares[1][1].getX(),squares[1][1].getY());
-        Pawn wp3 = new Pawn(wp,"White",squares[1][2].getX(),squares[1][2].getY());
-        Pawn wp4 = new Pawn(wp,"White",squares[1][3].getX(),squares[1][3].getY());
-        Pawn wp5 = new Pawn(wp,"White",squares[1][4].getX(),squares[1][4].getY());
-        Pawn wp6 = new Pawn(wp,"White",squares[1][5].getX(),squares[1][5].getY());
-        Pawn wp7 = new Pawn(wp,"White",squares[1][6].getX(),squares[1][6].getY());
-        Pawn wp8 = new Pawn(wp,"White",squares[1][7].getX(),squares[1][7].getY());
+        Pawn wp1 = new Pawn(wp,"White",squares[1][0].getX(),squares[1][0].getY(),true);
+        Pawn wp2 = new Pawn(wp,"White",squares[1][1].getX(),squares[1][1].getY(),true);
+        Pawn wp3 = new Pawn(wp,"White",squares[1][2].getX(),squares[1][2].getY(),true);
+        Pawn wp4 = new Pawn(wp,"White",squares[1][3].getX(),squares[1][3].getY(),true);
+        Pawn wp5 = new Pawn(wp,"White",squares[1][4].getX(),squares[1][4].getY(),true);
+        Pawn wp6 = new Pawn(wp,"White",squares[1][5].getX(),squares[1][5].getY(),true);
+        Pawn wp7 = new Pawn(wp,"White",squares[1][6].getX(),squares[1][6].getY(),true);
+        Pawn wp8 = new Pawn(wp,"White",squares[1][7].getX(),squares[1][7].getY(),true);
         squares[1][0].setPiece(wp1);
         squares[1][1].setPiece(wp2);
         squares[1][2].setPiece(wp3);
@@ -71,14 +73,14 @@ public class BoardGame extends View {
         squares[1][7].setPiece(wp8);
         Bitmap bp = BitmapFactory.decodeResource(getResources(),R.drawable.black_pawn);
         bp = Bitmap.createScaledBitmap(bp,w,w,true);
-        Pawn bp1 = new Pawn(bp,"Black",squares[6][0].getX(),squares[6][0].getY());
-        Pawn bp2 = new Pawn(bp,"Black",squares[6][1].getX(),squares[6][1].getY());
-        Pawn bp3 = new Pawn(bp,"Black",squares[6][2].getX(),squares[6][2].getY());
-        Pawn bp4 = new Pawn(bp,"Black",squares[6][3].getX(),squares[6][3].getY());
-        Pawn bp5 = new Pawn(bp,"Black",squares[6][4].getX(),squares[6][4].getY());
-        Pawn bp6 = new Pawn(bp,"Black",squares[6][5].getX(),squares[6][5].getY());
-        Pawn bp7 = new Pawn(bp,"Black",squares[6][6].getX(),squares[6][6].getY());
-        Pawn bp8 = new Pawn(bp,"Black",squares[6][7].getX(),squares[6][7].getY());
+        Pawn bp1 = new Pawn(bp,"Black",squares[6][0].getX(),squares[6][0].getY(),true);
+        Pawn bp2 = new Pawn(bp,"Black",squares[6][1].getX(),squares[6][1].getY(),true);
+        Pawn bp3 = new Pawn(bp,"Black",squares[6][2].getX(),squares[6][2].getY(),true);
+        Pawn bp4 = new Pawn(bp,"Black",squares[6][3].getX(),squares[6][3].getY(),true);
+        Pawn bp5 = new Pawn(bp,"Black",squares[6][4].getX(),squares[6][4].getY(),true);
+        Pawn bp6 = new Pawn(bp,"Black",squares[6][5].getX(),squares[6][5].getY(),true);
+        Pawn bp7 = new Pawn(bp,"Black",squares[6][6].getX(),squares[6][6].getY(),true);
+        Pawn bp8 = new Pawn(bp,"Black",squares[6][7].getX(),squares[6][7].getY(),true);
         squares[6][0].setPiece(bp1);
         squares[6][1].setPiece(bp2);
         squares[6][2].setPiece(bp3);
@@ -141,7 +143,6 @@ public class BoardGame extends View {
         squares[7][5].setPiece(bb2);
 
 
-
     }
 
 
@@ -193,19 +194,37 @@ public class BoardGame extends View {
     public boolean onTouchEvent(MotionEvent event) {
         if(event.getAction() == MotionEvent.ACTION_DOWN)
         {
-
+            if (((int) event.getX() > 0 && (int) event.getX() < h*NUM_OF_SQUARES) && ((int) event.getY() > 0 && (int) event.getY() < h*NUM_OF_SQUARES))
+            {
+                currX = (int) event.getX();
+                currY = (int) event.getY();
+                userTouchSquareBefore();
+            }
+            if (squares[x1][y1].getPiece()!= null) {
+                tempPiece = squares[x1][y1].getPiece();
+            }
         }
         if(event.getAction() == MotionEvent.ACTION_MOVE)
         {
-            coin.x = (int) event.getX();
-            coin.y = (int) event.getY();
-            invalidate();
+            if (squares[x1][y1].getPiece()!= null) {
+                squares[x1][y1].getPiece().setX((int) event.getX());
+                squares[x1][y1].getPiece().setY((int) event.getY());
+                invalidate();
+            }
         }
         if(event.getAction() == MotionEvent.ACTION_UP)
         {
-            coin.x = (int)event.getX();
-            coin.y = (int)event.getY();
-            updateCoinAfterRelease();
+            if (((int) event.getX() > 0 && (int) event.getX() < h*NUM_OF_SQUARES) && ((int) event.getY() > 0 && (int) event.getY() < h*NUM_OF_SQUARES))
+            {
+                currX = (int) event.getX();
+                currY = (int) event.getY();
+                userTouchSquareAfter();
+            }
+            squares[x2][y2].setPiece(tempPiece);
+            squares[x1][y1].setPiece(null);
+//            coin.x = (int)event.getX();
+//            coin.y = (int)event.getY();
+//            updatePieceAfterRelease();
             invalidate();
         }
 
@@ -213,17 +232,37 @@ public class BoardGame extends View {
         return true;
     }
 
-    private void updateCoinAfterRelease() {
-        int x1 = 0, y1 = 0; //
+    private void userTouchSquareBefore() //when clicking the board
+    {
+        x1 = 0;
+        y1 = 0;
         for (int i = 0; i < NUM_OF_SQUARES; i++) {
             for (int j = 0; j < NUM_OF_SQUARES; j++) {
-                if(squares[i][j].didUserTouchMe(coin.x, coin.y))
+                if(squares[i][j].didUserTouchMe(currX, currY))
                 {
                     x1 = i;
                     y1 = j;
                 }
             }
         }
+    }
+    private void userTouchSquareAfter() // after releasing the mouse
+    {
+        x2 = 0;
+        y2 = 0;
+        for (int i = 0; i < NUM_OF_SQUARES; i++) {
+            for (int j = 0; j < NUM_OF_SQUARES; j++) {
+                if(squares[i][j].didUserTouchMe(currX, currY))
+                {
+                    x2 = i;
+                    y2 = j;
+                }
+            }
+        }
+    }
+
+    private void updatePieceAfterRelease() // בודק אם המהלך חוקי ואם כן משנה בהתאם ואם לא מחזיר את המצב לקדמותו
+    {
 
         if(squares[x1][y1].color == Color.BLACK)
         {

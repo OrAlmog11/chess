@@ -30,6 +30,10 @@ public class Square extends Shape{
         this.piece = piece;
     }
 
+    public Piece getPiece() {
+        return piece;
+    }
+
     public String takenByColor(){
         if (this.piece == null)
             return null;
@@ -51,7 +55,5 @@ public class Square extends Shape{
         return xu > x && xu < x+w && yu > y && yu < y+h;
     }
 
-    public void addPiece(Pawn p1) {
-        this.piece = p1;
-    }
+
 }

@@ -9,9 +9,8 @@ public class Rook extends Piece{
     private int x;
     private int y;
     public Rook(Bitmap bb, String color, int x, int y) {
-        super(bb,color);
-        this.x = x;
-        this.y = y;
+        super(bb,color,x,y);
+
 
     }
 

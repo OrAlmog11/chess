@@ -8,11 +8,14 @@ public class Pawn extends Piece{
 
     private int x;
     private int y;
-    public Pawn(Bitmap b, String color, int x, int y) {
-        super(b, color);
-        this.x = x;
-        this.y = y;
+    private boolean isFirstMove;
+    public Pawn(Bitmap b, String color, int x, int y, boolean isFirstMove) {
+        super(b, color,x,y);
+        this.isFirstMove = true;
 
+    }
+    public boolean getisFirstMove(){
+        return this.isFirstMove;
     }
 
     public void draw(Canvas canvas, int x, int y)

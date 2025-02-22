@@ -9,9 +9,8 @@ public class Queen extends Piece{
     private int y;
 
     public Queen(Bitmap DD, String color, int x, int y) {
-        super(DD,color);
-        this.x = x;
-        this.y = y;
+        super(DD,color,x,y);
+
 
     }
 
