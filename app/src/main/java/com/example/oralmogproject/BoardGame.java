@@ -15,7 +15,7 @@ public class BoardGame extends View {
     private Context context;
     private Square[][] squares;
     private Coin coin;
-    private final int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6, h = 7;
+    //private final int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6, h = 7;
     private int currX,currY,x1,y1,x2,y2;
     private Piece tempPiece;
 
@@ -23,7 +23,7 @@ public class BoardGame extends View {
 
     private Bitmap bitmap;
     private boolean firstTime = true;
-
+    private int w,h;
 
 
     public BoardGame(Context context) {
@@ -159,8 +159,8 @@ public class BoardGame extends View {
     private void initBoard(Canvas canvas) {
         int x = 0;
         int y = 0;
-        int w = canvas.getWidth()/NUM_OF_SQUARES;
-        int h = w;
+        w = canvas.getWidth()/NUM_OF_SQUARES;
+        h = w;
         int color;
 
         for (int i = 0; i < squares.length; i++)
@@ -192,9 +192,11 @@ public class BoardGame extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        int xloc = (int) event.getX();
+        int yloc = (int) event.getY();
         if(event.getAction() == MotionEvent.ACTION_DOWN)
         {
-            if (((int) event.getX() > 0 && (int) event.getX() < h*NUM_OF_SQUARES) && ((int) event.getY() > 0 && (int) event.getY() < h*NUM_OF_SQUARES))
+            if ((xloc > 0 && xloc < h*NUM_OF_SQUARES) && (yloc > 0 && yloc < h*NUM_OF_SQUARES))
             {
                 currX = (int) event.getX();
                 currY = (int) event.getY();
