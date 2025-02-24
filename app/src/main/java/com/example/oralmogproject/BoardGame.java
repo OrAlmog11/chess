@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 
 public class BoardGame extends View {
     private Context context;
+    private String turn = "White";
     private Square[][] squares;
     private Coin coin;
     //private final int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6, h = 7;
@@ -198,35 +199,40 @@ public class BoardGame extends View {
         {
             if ((xloc > 0 && xloc < h*NUM_OF_SQUARES) && (yloc > 0 && yloc < h*NUM_OF_SQUARES))
             {
-                currX = (int) event.getX();
-                currY = (int) event.getY();
+                currX = xloc;
+                currY = yloc;
                 userTouchSquareBefore();
-            }
-            if (squares[x1][y1].getPiece()!= null) {
-                tempPiece = squares[x1][y1].getPiece();
+                if (squares[x1][y1].getPiece()!= null) {
+                    tempPiece = squares[x1][y1].getPiece();
+                }
+                else
+                {
+                    tempPiece = null;
+                }
+
             }
         }
         if(event.getAction() == MotionEvent.ACTION_MOVE)
         {
-            if (squares[x1][y1].getPiece()!= null) {
-                squares[x1][y1].getPiece().setX((int) event.getX());
-                squares[x1][y1].getPiece().setY((int) event.getY());
-                invalidate();
-            }
+//            if (squares[x1][y1].getPiece()!= null) {
+//                squares[x1][y1].getPiece().setX((int) event.getX());
+//                squares[x1][y1].getPiece().setY((int) event.getY());
+//                invalidate();
+//            }
         }
         if(event.getAction() == MotionEvent.ACTION_UP)
         {
-            if (((int) event.getX() > 0 && (int) event.getX() < h*NUM_OF_SQUARES) && ((int) event.getY() > 0 && (int) event.getY() < h*NUM_OF_SQUARES))
+            if ((xloc > 0 && xloc < h*NUM_OF_SQUARES) && (yloc > 0 && yloc < h*NUM_OF_SQUARES))
             {
-                currX = (int) event.getX();
-                currY = (int) event.getY();
+                currX = xloc;
+                currY = yloc;
                 userTouchSquareAfter();
             }
-            squares[x2][y2].setPiece(tempPiece);
-            squares[x1][y1].setPiece(null);
+
 //            coin.x = (int)event.getX();
 //            coin.y = (int)event.getY();
 //            updatePieceAfterRelease();
+            updatePieceAfterRelease();
             invalidate();
         }
 
@@ -265,19 +271,42 @@ public class BoardGame extends View {
 
     private void updatePieceAfterRelease() // בודק אם המהלך חוקי ואם כן משנה בהתאם ואם לא מחזיר את המצב לקדמותו
     {
-
-        if(squares[x1][y1].color == Color.BLACK)
-        {
-            coin.x = squares[x1][y1].x + coin.getRadius() * 2;
-            coin.y = squares[x1][y1].y + coin.getRadius() * 2;
-            coin.setLastX(coin.x);
-            coin.setLastY(coin.y);
+        if (tempPiece!=null){
+            if (tempPiece.getColor()==turn && turn == "White")
+            {
+                if (tempPiece != null)
+                {
+                    squares[x1][y1].setPiece(null);
+                    squares[x2][y2].setPiece(tempPiece);
+                }
+                turn = "Black";
+            }
+            else if (tempPiece.getColor()==turn && turn == "Black")
+            {
+                if (tempPiece != null)
+                {
+                    squares[x1][y1].setPiece(null);
+                    squares[x2][y2].setPiece(tempPiece);
+                }
+                turn = "White";
+            }
+            else if (tempPiece.getColor()!=turn)
+            {
+                squares[x1][y1].setPiece(tempPiece);
+            }
         }
-        else
-        {
-            coin.x = coin.getLastX();
-            coin.y = coin.getLastY();
-        }
+//        if(squares[x1][y1].color == Color.BLACK)
+//        {
+//            coin.x = squares[x1][y1].x + coin.getRadius() * 2;
+//            coin.y = squares[x1][y1].y + coin.getRadius() * 2;
+//            coin.setLastX(coin.x);
+//            coin.setLastY(coin.y);
+//        }
+//        else
+//        {
+//            coin.x = coin.getLastX();
+//            coin.y = coin.getLastY();
+//        }
 
     }
 }
