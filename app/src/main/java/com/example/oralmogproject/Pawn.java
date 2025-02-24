@@ -6,16 +6,21 @@ import android.graphics.Canvas;
 
 public class Pawn extends Piece{
 
-    private int x;
-    private int y;
-    private boolean isFirstMove;
-    public Pawn(Bitmap b, String color, int x, int y, boolean isFirstMove) {
-        super(b, color,x,y);
-        this.isFirstMove = true;
+
+
+    //    private int x;
+//    private int y;
+    private boolean isFirstMove = true;
+    public Pawn(Bitmap DD, String color, int x, int y) {
+        super(DD,color,x,y);
+
 
     }
     public boolean getisFirstMove(){
         return this.isFirstMove;
+    }
+    public void setFirstMove(boolean firstMove) {
+        isFirstMove = firstMove;
     }
 
     public void draw(Canvas canvas, int x, int y)

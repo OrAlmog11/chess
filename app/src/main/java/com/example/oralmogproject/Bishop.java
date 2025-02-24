@@ -5,11 +5,13 @@ import android.graphics.Canvas;
 
 
 public class Bishop extends Piece{
-    private int x;
-    private int y;
+//    private int x;
+//    private int y;
 
     public Bishop(Bitmap DD, String color, int x, int y) {
         super(DD,color,x,y);
+
+
     }
 
     public void draw(Canvas canvas, int x, int y)

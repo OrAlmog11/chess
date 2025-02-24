@@ -6,11 +6,14 @@ import android.graphics.Canvas;
 public class Piece {
     protected Bitmap bitmap;
     protected String color;
+    protected String kind;
 
 
 
     protected int x;
     protected int y;
+
+
 
     public Piece(Bitmap bitmap, String color, int x, int y) {
         this.bitmap = bitmap;
@@ -39,6 +42,9 @@ public class Piece {
         return this.color;
     }
 
+    public String getKind() {
+        return kind;
+    }
     public void draw(Canvas canvas, int x, int y)
     {
         canvas.drawBitmap(bitmap,x,y,null);

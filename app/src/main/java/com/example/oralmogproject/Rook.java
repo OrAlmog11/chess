@@ -6,10 +6,10 @@ import android.graphics.Canvas;
 
 public class Rook extends Piece{
 
-    private int x;
-    private int y;
-    public Rook(Bitmap bb, String color, int x, int y) {
-        super(bb,color,x,y);
+//    private int x;
+//    private int y;
+    public Rook(Bitmap DD, String color, int x, int y) {
+        super(DD,color,x,y);
 
 
     }
