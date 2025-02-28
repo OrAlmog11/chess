@@ -18,7 +18,7 @@ public class BoardGame extends View {
     private Square[][] squares;
     private Coin coin;
     //private final int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6, h = 7;
-    private int currX,currY,x1,y1,x2,y2;
+    private int currX, currY, x1, y1, x2, y2;
     private Piece tempPiece;
     private Pawn tempPawn;
     private Bishop tempBishop;
@@ -36,7 +36,7 @@ public class BoardGame extends View {
 
     private Bitmap bitmap;
     private boolean firstTime = true;
-    private int w,h;
+    private int w, h;
 
 
     public BoardGame(Context context) {
@@ -45,14 +45,12 @@ public class BoardGame extends View {
         squares = new Square[NUM_OF_SQUARES][NUM_OF_SQUARES];
 
 
-
     }
 
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
-        if(firstTime)
-        {
+        if (firstTime) {
             initBoard(canvas);
             initPieces(canvas);
             firstTime = false;
@@ -65,17 +63,17 @@ public class BoardGame extends View {
     }
 
     private void initPieces(Canvas canvas) {
-        int w = canvas.getWidth()/NUM_OF_SQUARES;
-        Bitmap wp = BitmapFactory.decodeResource(getResources(),R.drawable.white_pawn);
-        wp = Bitmap.createScaledBitmap(wp,w,w,true);
-        Pawn wp1 = new Pawn(wp,"White",squares[1][0].getX(),squares[1][0].getY());
-        Pawn wp2 = new Pawn(wp,"White",squares[1][1].getX(),squares[1][1].getY());
-        Pawn wp3 = new Pawn(wp,"White",squares[1][2].getX(),squares[1][2].getY());
-        Pawn wp4 = new Pawn(wp,"White",squares[1][3].getX(),squares[1][3].getY());
-        Pawn wp5 = new Pawn(wp,"White",squares[1][4].getX(),squares[1][4].getY());
-        Pawn wp6 = new Pawn(wp,"White",squares[1][5].getX(),squares[1][5].getY());
-        Pawn wp7 = new Pawn(wp,"White",squares[1][6].getX(),squares[1][6].getY());
-        Pawn wp8 = new Pawn(wp,"White",squares[1][7].getX(),squares[1][7].getY());
+        int w = canvas.getWidth() / NUM_OF_SQUARES;
+        Bitmap wp = BitmapFactory.decodeResource(getResources(), R.drawable.white_pawn);
+        wp = Bitmap.createScaledBitmap(wp, w, w, true);
+        Pawn wp1 = new Pawn(wp, "White", squares[1][0].getX(), squares[1][0].getY());
+        Pawn wp2 = new Pawn(wp, "White", squares[1][1].getX(), squares[1][1].getY());
+        Pawn wp3 = new Pawn(wp, "White", squares[1][2].getX(), squares[1][2].getY());
+        Pawn wp4 = new Pawn(wp, "White", squares[1][3].getX(), squares[1][3].getY());
+        Pawn wp5 = new Pawn(wp, "White", squares[1][4].getX(), squares[1][4].getY());
+        Pawn wp6 = new Pawn(wp, "White", squares[1][5].getX(), squares[1][5].getY());
+        Pawn wp7 = new Pawn(wp, "White", squares[1][6].getX(), squares[1][6].getY());
+        Pawn wp8 = new Pawn(wp, "White", squares[1][7].getX(), squares[1][7].getY());
         squares[1][0].setPiece(wp1);
         squares[1][1].setPiece(wp2);
         squares[1][2].setPiece(wp3);
@@ -84,16 +82,16 @@ public class BoardGame extends View {
         squares[1][5].setPiece(wp6);
         squares[1][6].setPiece(wp7);
         squares[1][7].setPiece(wp8);
-        Bitmap bp = BitmapFactory.decodeResource(getResources(),R.drawable.black_pawn);
-        bp = Bitmap.createScaledBitmap(bp,w,w,true);
-        Pawn bp1 = new Pawn(bp,"Black",squares[6][0].getX(),squares[6][0].getY());
-        Pawn bp2 = new Pawn(bp,"Black",squares[6][1].getX(),squares[6][1].getY());
-        Pawn bp3 = new Pawn(bp,"Black",squares[6][2].getX(),squares[6][2].getY());
-        Pawn bp4 = new Pawn(bp,"Black",squares[6][3].getX(),squares[6][3].getY());
-        Pawn bp5 = new Pawn(bp,"Black",squares[6][4].getX(),squares[6][4].getY());
-        Pawn bp6 = new Pawn(bp,"Black",squares[6][5].getX(),squares[6][5].getY());
-        Pawn bp7 = new Pawn(bp,"Black",squares[6][6].getX(),squares[6][6].getY());
-        Pawn bp8 = new Pawn(bp,"Black",squares[6][7].getX(),squares[6][7].getY());
+        Bitmap bp = BitmapFactory.decodeResource(getResources(), R.drawable.black_pawn);
+        bp = Bitmap.createScaledBitmap(bp, w, w, true);
+        Pawn bp1 = new Pawn(bp, "Black", squares[6][0].getX(), squares[6][0].getY());
+        Pawn bp2 = new Pawn(bp, "Black", squares[6][1].getX(), squares[6][1].getY());
+        Pawn bp3 = new Pawn(bp, "Black", squares[6][2].getX(), squares[6][2].getY());
+        Pawn bp4 = new Pawn(bp, "Black", squares[6][3].getX(), squares[6][3].getY());
+        Pawn bp5 = new Pawn(bp, "Black", squares[6][4].getX(), squares[6][4].getY());
+        Pawn bp6 = new Pawn(bp, "Black", squares[6][5].getX(), squares[6][5].getY());
+        Pawn bp7 = new Pawn(bp, "Black", squares[6][6].getX(), squares[6][6].getY());
+        Pawn bp8 = new Pawn(bp, "Black", squares[6][7].getX(), squares[6][7].getY());
         squares[6][0].setPiece(bp1);
         squares[6][1].setPiece(bp2);
         squares[6][2].setPiece(bp3);
@@ -102,56 +100,56 @@ public class BoardGame extends View {
         squares[6][5].setPiece(bp6);
         squares[6][6].setPiece(bp7);
         squares[6][7].setPiece(bp8);
-        Bitmap wr = BitmapFactory.decodeResource(getResources(),R.drawable.white_rook);
-        wr = Bitmap.createScaledBitmap(wr,w,w,true);
-        Rook wr1 = new Rook(wr,"White",squares[0][0].getX(),squares[0][0].getY());
-        Rook wr2 = new Rook(wr,"White",squares[0][7].getX(),squares[0][7].getY());
+        Bitmap wr = BitmapFactory.decodeResource(getResources(), R.drawable.white_rook);
+        wr = Bitmap.createScaledBitmap(wr, w, w, true);
+        Rook wr1 = new Rook(wr, "White", squares[0][0].getX(), squares[0][0].getY());
+        Rook wr2 = new Rook(wr, "White", squares[0][7].getX(), squares[0][7].getY());
         squares[0][0].setPiece(wr1);
         squares[0][7].setPiece(wr2);
-        Bitmap br = BitmapFactory.decodeResource(getResources(),R.drawable.black_rook);
-        br = Bitmap.createScaledBitmap(br,w,w,true);
-        Rook br1 = new Rook(br,"Black",squares[7][0].getX(),squares[7][0].getY());
-        Rook br2 = new Rook(br,"Black",squares[7][7].getX(),squares[7][7].getY());
+        Bitmap br = BitmapFactory.decodeResource(getResources(), R.drawable.black_rook);
+        br = Bitmap.createScaledBitmap(br, w, w, true);
+        Rook br1 = new Rook(br, "Black", squares[7][0].getX(), squares[7][0].getY());
+        Rook br2 = new Rook(br, "Black", squares[7][7].getX(), squares[7][7].getY());
         squares[7][0].setPiece(br1);
         squares[7][7].setPiece(br2);
-        Bitmap wk = BitmapFactory.decodeResource(getResources(),R.drawable.white_king);
-        wk = Bitmap.createScaledBitmap(wk,w,w,true);
-        King Wk = new King(wk,"White", squares[0][3].getX(),squares[0][3].getY());
+        Bitmap wk = BitmapFactory.decodeResource(getResources(), R.drawable.white_king);
+        wk = Bitmap.createScaledBitmap(wk, w, w, true);
+        King Wk = new King(wk, "White", squares[0][3].getX(), squares[0][3].getY());
         squares[0][3].setPiece(Wk);
-        Bitmap bk = BitmapFactory.decodeResource(getResources(),R.drawable.black_king);
-        bk = Bitmap.createScaledBitmap(bk,w,w,true);
-        King Bk = new King(bk,"Black", squares[7][3].getX(),squares[7][3].getY());
+        Bitmap bk = BitmapFactory.decodeResource(getResources(), R.drawable.black_king);
+        bk = Bitmap.createScaledBitmap(bk, w, w, true);
+        King Bk = new King(bk, "Black", squares[7][3].getX(), squares[7][3].getY());
         squares[7][3].setPiece(Bk);
-        Bitmap wq = BitmapFactory.decodeResource(getResources(),R.drawable.white_queen);
-        wq = Bitmap.createScaledBitmap(wq,w,w,true);
-        Queen Wq = new Queen(wq,"White",squares[0][4].getX(),squares[0][4].getY());
+        Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
+        wq = Bitmap.createScaledBitmap(wq, w, w, true);
+        Queen Wq = new Queen(wq, "White", squares[0][4].getX(), squares[0][4].getY());
         squares[0][4].setPiece(Wq);
-        Bitmap bq = BitmapFactory.decodeResource(getResources(),R.drawable.black_queen);
-        bq = Bitmap.createScaledBitmap(bq,w,w,true);
-        Queen Bq = new Queen(bq,"Black",squares[7][4].getX(),squares[7][4].getY());
+        Bitmap bq = BitmapFactory.decodeResource(getResources(), R.drawable.black_queen);
+        bq = Bitmap.createScaledBitmap(bq, w, w, true);
+        Queen Bq = new Queen(bq, "Black", squares[7][4].getX(), squares[7][4].getY());
         squares[7][4].setPiece(Bq);
-        Bitmap wk2 = BitmapFactory.decodeResource(getResources(),R.drawable.white_knight);//white knight = wk2
-        wk2 = Bitmap.createScaledBitmap(wk2,w,w,true);
-        Knight wkn1 = new Knight(wk2,"White",squares[0][1].getX(),squares[0][1].getY());
-        Knight wkn2 = new Knight(wk2,"White",squares[0][6].getX(),squares[0][6].getY());
+        Bitmap wk2 = BitmapFactory.decodeResource(getResources(), R.drawable.white_knight);//white knight = wk2
+        wk2 = Bitmap.createScaledBitmap(wk2, w, w, true);
+        Knight wkn1 = new Knight(wk2, "White", squares[0][1].getX(), squares[0][1].getY());
+        Knight wkn2 = new Knight(wk2, "White", squares[0][6].getX(), squares[0][6].getY());
         squares[0][1].setPiece(wkn1);
         squares[0][6].setPiece(wkn2);
-        Bitmap bk2 = BitmapFactory.decodeResource(getResources(),R.drawable.black_knight);//black knight = bk2
-        bk2 = Bitmap.createScaledBitmap(bk2,w,w,true);
-        Knight bkn1 = new Knight(bk2,"Black",squares[7][1].getX(),squares[7][1].getY());
-        Knight bkn2 = new Knight(bk2,"Black",squares[7][6].getX(),squares[7][6].getY());
+        Bitmap bk2 = BitmapFactory.decodeResource(getResources(), R.drawable.black_knight);//black knight = bk2
+        bk2 = Bitmap.createScaledBitmap(bk2, w, w, true);
+        Knight bkn1 = new Knight(bk2, "Black", squares[7][1].getX(), squares[7][1].getY());
+        Knight bkn2 = new Knight(bk2, "Black", squares[7][6].getX(), squares[7][6].getY());
         squares[7][1].setPiece(bkn1);
         squares[7][6].setPiece(bkn2);
-        Bitmap wb = BitmapFactory.decodeResource(getResources(),R.drawable.white_bishop);//black knight = bk2
-        wb = Bitmap.createScaledBitmap(wb,w,w,true);
-        Bishop wb1 = new Bishop(wb,"White",squares[0][2].getX(),squares[0][2].getY());
-        Bishop wb2 = new Bishop(wb,"White",squares[0][5].getX(), squares[0][5].getY());
+        Bitmap wb = BitmapFactory.decodeResource(getResources(), R.drawable.white_bishop);//black knight = bk2
+        wb = Bitmap.createScaledBitmap(wb, w, w, true);
+        Bishop wb1 = new Bishop(wb, "White", squares[0][2].getX(), squares[0][2].getY());
+        Bishop wb2 = new Bishop(wb, "White", squares[0][5].getX(), squares[0][5].getY());
         squares[0][2].setPiece(wb1);
         squares[0][5].setPiece(wb2);
-        Bitmap bb = BitmapFactory.decodeResource(getResources(),R.drawable.black_bishop);//black knight = bk2
-        bb = Bitmap.createScaledBitmap(bb,w,w,true);
-        Bishop bb1 = new Bishop(bb,"Black",squares[7][2].getX(),squares[7][2].getY());
-        Bishop bb2 = new Bishop(bb,"Black",squares[7][5].getX(),squares[7][5].getY());
+        Bitmap bb = BitmapFactory.decodeResource(getResources(), R.drawable.black_bishop);//black knight = bk2
+        bb = Bitmap.createScaledBitmap(bb, w, w, true);
+        Bishop bb1 = new Bishop(bb, "Black", squares[7][2].getX(), squares[7][2].getY());
+        Bishop bb2 = new Bishop(bb, "Black", squares[7][5].getX(), squares[7][5].getY());
         squares[7][2].setPiece(bb1);
         squares[7][5].setPiece(bb2);
 
@@ -160,10 +158,8 @@ public class BoardGame extends View {
 
 
     private void drawBoard(Canvas canvas) {
-        for (int i = 0; i < squares.length; i++)
-        {
-            for (int j = 0; j < squares.length; j++)
-            {
+        for (int i = 0; i < squares.length; i++) {
+            for (int j = 0; j < squares.length; j++) {
                 squares[i][j].draw(canvas);
             }
         }
@@ -172,31 +168,27 @@ public class BoardGame extends View {
     private void initBoard(Canvas canvas) {
         int x = 0;
         int y = 0;
-        w = canvas.getWidth()/NUM_OF_SQUARES;
+        w = canvas.getWidth() / NUM_OF_SQUARES;
         h = w;
         int color;
 
-        for (int i = 0; i < squares.length; i++)
-        {
-            for (int j = 0; j < NUM_OF_SQUARES; j++)
-            {
-                if(i%2 == 0)  // Even lines  שורות זוגיות
+        for (int i = 0; i < squares.length; i++) {
+            for (int j = 0; j < NUM_OF_SQUARES; j++) {
+                if (i % 2 == 0)  // Even lines  שורות זוגיות
                 {
-                    if(j%2 == 0)
+                    if (j % 2 == 0)
                         color = Color.WHITE;
                     else
                         color = Color.GRAY;
-                    
-                }
-                else
-                {   // Odd lines   שורות אי זוגיות
-                    if(j%2 == 0)
+
+                } else {   // Odd lines   שורות אי זוגיות
+                    if (j % 2 == 0)
                         color = Color.GRAY;
                     else
                         color = Color.WHITE;
                 }
-                squares[i][j] = new Square(x,y,w,h,color);
-                x = x+w;
+                squares[i][j] = new Square(x, y, w, h, color);
+                x = x + w;
             }
             x = 0;
             y = y + h;
@@ -207,35 +199,28 @@ public class BoardGame extends View {
     public boolean onTouchEvent(MotionEvent event) {
         int xloc = (int) event.getX();
         int yloc = (int) event.getY();
-        if(event.getAction() == MotionEvent.ACTION_DOWN)
-        {
-            if ((xloc > 0 && xloc < h*NUM_OF_SQUARES) && (yloc > 0 && yloc < h*NUM_OF_SQUARES))
-            {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if ((xloc > 0 && xloc < h * NUM_OF_SQUARES) && (yloc > 0 && yloc < h * NUM_OF_SQUARES)) {
                 currX = xloc;
                 currY = yloc;
                 userTouchSquareBefore();
-                if (squares[x1][y1].getPiece()!= null) {
+                if (squares[x1][y1].getPiece() != null) {
                     tempPiece = squares[x1][y1].getPiece();
-                }
-                else
-                {
+                } else {
                     tempPiece = null;
                 }
 
             }
         }
-        if(event.getAction() == MotionEvent.ACTION_MOVE)
-        {
+        if (event.getAction() == MotionEvent.ACTION_MOVE) {
 //            if (squares[x1][y1].getPiece()!= null) {
 //                squares[x1][y1].getPiece().setX((int) event.getX());
 //                squares[x1][y1].getPiece().setY((int) event.getY());
 //                invalidate();
 //            }
         }
-        if(event.getAction() == MotionEvent.ACTION_UP)
-        {
-            if ((xloc > 0 && xloc < h*NUM_OF_SQUARES) && (yloc > 0 && yloc < h*NUM_OF_SQUARES))
-            {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            if ((xloc > 0 && xloc < h * NUM_OF_SQUARES) && (yloc > 0 && yloc < h * NUM_OF_SQUARES)) {
                 currX = xloc;
                 currY = yloc;
                 userTouchSquareAfter();
@@ -258,22 +243,21 @@ public class BoardGame extends View {
         y1 = 0;
         for (int i = 0; i < NUM_OF_SQUARES; i++) {
             for (int j = 0; j < NUM_OF_SQUARES; j++) {
-                if(squares[i][j].didUserTouchMe(currX, currY))
-                {
+                if (squares[i][j].didUserTouchMe(currX, currY)) {
                     x1 = i;
                     y1 = j;
                 }
             }
         }
     }
+
     private void userTouchSquareAfter() // after releasing the mouse
     {
         x2 = 0;
         y2 = 0;
         for (int i = 0; i < NUM_OF_SQUARES; i++) {
             for (int j = 0; j < NUM_OF_SQUARES; j++) {
-                if(squares[i][j].didUserTouchMe(currX, currY))
-                {
+                if (squares[i][j].didUserTouchMe(currX, currY)) {
                     x2 = i;
                     y2 = j;
                 }
@@ -283,87 +267,55 @@ public class BoardGame extends View {
 
     private void updatePieceAfterRelease() // בודק אם המהלך חוקי ואם כן משנה בהתאם ואם לא מחזיר את המצב לקדמותו
     {
-        if (tempPiece!=null){
-            if (tempPiece.getColor()==turn && turn == "White")
-            {
-                if (tempPiece != null)
-                {
-                    if (tempPiece instanceof Pawn)
-                    {
+        if (tempPiece != null) {
+            if (tempPiece.getColor() == turn && turn == "White") {
+                if (tempPiece != null) {
+                    if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;
-                    }
-                    else if (tempPiece instanceof Bishop)
-                    {
+                        whitepawn();
+                    } else if (tempPiece instanceof Bishop) {
                         tempBishop = (Bishop) tempPiece;
-                    }
-                    else if (tempPiece instanceof Knight)
-                    {
+                    } else if (tempPiece instanceof Knight) {
                         tempKnight = (Knight) tempPiece;
-                    }
-                    else if (tempPiece instanceof Rook)
-                    {
+                    } else if (tempPiece instanceof Rook) {
                         tempRook = (Rook) tempPiece;
-                    }
-                    else if (tempPiece instanceof Queen)
-                    {
+                    } else if (tempPiece instanceof Queen) {
                         tempQueen = (Queen) tempPiece;
-                    }
-                    else if (tempPiece instanceof King)
-                    {
+                    } else if (tempPiece instanceof King) {
                         tempKing = (King) tempPiece;
                     }
 
 
-                    squares[x1][y1].setPiece(null);
-                    squares[x2][y2].setPiece(tempPiece);
+//                    squares[x1][y1].setPiece(null);
+//                    squares[x2][y2].setPiece(tempPiece);
                 }
-                if (x1!=x2||y1!=y2)
-                {
-                    turn = "Black";
-                }
-                else turn = "White";
+//                if (x1 != x2 || y1 != y2) {
+//                    turn = "Black";
+//                } else turn = "White";
 
-            }
-            else if (tempPiece.getColor()==turn && turn == "Black")
-            {
-                if (tempPiece != null)
-                {
-                    if (tempPiece instanceof Pawn)
-                    {
+            } else if (tempPiece.getColor() == turn && turn == "Black") {
+                if (tempPiece != null) {
+                    if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;
-                    }
-                    else if (tempPiece instanceof Bishop)
-                    {
+                    } else if (tempPiece instanceof Bishop) {
                         tempBishop = (Bishop) tempPiece;
-                    }
-                    else if (tempPiece instanceof Knight)
-                    {
+                    } else if (tempPiece instanceof Knight) {
                         tempKnight = (Knight) tempPiece;
-                    }
-                    else if (tempPiece instanceof Rook)
-                    {
+                    } else if (tempPiece instanceof Rook) {
                         tempRook = (Rook) tempPiece;
-                    }
-                    else if (tempPiece instanceof Queen)
-                    {
+                    } else if (tempPiece instanceof Queen) {
                         tempQueen = (Queen) tempPiece;
-                    }
-                    else if (tempPiece instanceof King)
-                    {
+                    } else if (tempPiece instanceof King) {
                         tempKing = (King) tempPiece;
                     }
 
                     squares[x1][y1].setPiece(null);
                     squares[x2][y2].setPiece(tempPiece);
                 }
-                if (x1!=x2||y1!=y2)
-                {
-                    turn = "White";
-                }
-                else turn = "Black";
-            }
-            else if (tempPiece.getColor()!=turn)
-            {
+//                if (x1 != x2 || y1 != y2) {
+//                    turn = "White";
+//                } else turn = "Black";
+            } else if (tempPiece.getColor() != turn) {
                 squares[x1][y1].setPiece(tempPiece);
             }
         }
@@ -380,5 +332,48 @@ public class BoardGame extends View {
 //            coin.y = coin.getLastY();
 //        }
 
+    }
+
+    private void whitepawn() {
+        if (tempPawn.getisFirstMove() == true) {
+            if (x2 - x1 == 0 && y2 - y1 == 2 && squares[x2][y2] == null && squares[x2][y2 - 1] == null) {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                tempPawn.setFirstMove(false);
+                turn = "Black";
+                invalidate();
+            }
+            else if (x2 - x1 == 0 && y2 - y1 == 1 && squares[x2][y2] == null) {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                tempPawn.setFirstMove(false);
+                turn = "Black";
+            }
+            else
+            {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+        }
+        else if (tempPawn.getisFirstMove() == false) {
+            if (x2 - x1 == 0 && y2 - y1 == 1 && squares[x2][y2] == null) {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "Black";
+            } else if (x2 - x1 == -1 && y2 - y1 == 1 && squares[x2][y2].getPiece().getColor() == "Black") {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "Black";
+            } else if (x2 - x1 == 1 && y2 - y1 == 1 && squares[x2][y2].getPiece().getColor() == "Black") {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "Black";
+            }
+            else
+            {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+
+        }
+        invalidate();
     }
 }
