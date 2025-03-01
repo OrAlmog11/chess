@@ -275,14 +275,19 @@ public class BoardGame extends View {
                         whitepawn();
                     } else if (tempPiece instanceof Bishop) {
                         tempBishop = (Bishop) tempPiece;
+                        whitebishop();
                     } else if (tempPiece instanceof Knight) {
                         tempKnight = (Knight) tempPiece;
+                        whiteknight();
                     } else if (tempPiece instanceof Rook) {
                         tempRook = (Rook) tempPiece;
+                        whiterook();
                     } else if (tempPiece instanceof Queen) {
                         tempQueen = (Queen) tempPiece;
+                        whitequeen();
                     } else if (tempPiece instanceof King) {
                         tempKing = (King) tempPiece;
+                        whiteking();
                     }
 
 
@@ -297,20 +302,26 @@ public class BoardGame extends View {
                 if (tempPiece != null) {
                     if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;
+                        blackpawn();
                     } else if (tempPiece instanceof Bishop) {
                         tempBishop = (Bishop) tempPiece;
+                        blackbishop();
                     } else if (tempPiece instanceof Knight) {
                         tempKnight = (Knight) tempPiece;
+                        blackknight();
                     } else if (tempPiece instanceof Rook) {
                         tempRook = (Rook) tempPiece;
+                        blackrook();
                     } else if (tempPiece instanceof Queen) {
                         tempQueen = (Queen) tempPiece;
+                        blackqueen();
                     } else if (tempPiece instanceof King) {
                         tempKing = (King) tempPiece;
+                        blackking();
                     }
 
-                    squares[x1][y1].setPiece(null);
-                    squares[x2][y2].setPiece(tempPiece);
+//                    squares[x1][y1].setPiece(null);
+//                    squares[x2][y2].setPiece(tempPiece);
                 }
 //                if (x1 != x2 || y1 != y2) {
 //                    turn = "White";
@@ -334,19 +345,31 @@ public class BoardGame extends View {
 
     }
 
+
+
+
+
     private void whitepawn() {
         if (tempPawn.getisFirstMove() == true) {
-            if (x2 - x1 == 0 && y2 - y1 == 2 && squares[x2][y2] == null && squares[x2][y2 - 1] == null) {
+            if (y2 - y1 == 0 && x2 - x1 == 2 && squares[x2][y2].getPiece() == null && squares[x2-1][y2].getPiece() == null) {
                 squares[x1][y1].setPiece(null);
                 squares[x2][y2].setPiece(tempPiece);
                 tempPawn.setFirstMove(false);
                 turn = "Black";
-                invalidate();
             }
-            else if (x2 - x1 == 0 && y2 - y1 == 1 && squares[x2][y2] == null) {
+            else if (y2 - y1 == 0 && x2 - x1 == 1 && squares[x2][y2].getPiece() == null) {
                 squares[x1][y1].setPiece(null);
                 squares[x2][y2].setPiece(tempPiece);
                 tempPawn.setFirstMove(false);
+                turn = "Black";
+            }
+            else if (y2 - y1 == -1 && x2 - x1 == 1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "Black") {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "Black";
+            } else if (y2 - y1 == 1 && x2 - x1 == 1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "Black") {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
                 turn = "Black";
             }
             else
@@ -355,15 +378,15 @@ public class BoardGame extends View {
             }
         }
         else if (tempPawn.getisFirstMove() == false) {
-            if (x2 - x1 == 0 && y2 - y1 == 1 && squares[x2][y2] == null) {
+            if (y2 - y1 == 0 && x2 - x1 == 1 && squares[x2][y2].getPiece() == null) {
                 squares[x1][y1].setPiece(null);
                 squares[x2][y2].setPiece(tempPiece);
                 turn = "Black";
-            } else if (x2 - x1 == -1 && y2 - y1 == 1 && squares[x2][y2].getPiece().getColor() == "Black") {
+            } else if (y2 - y1 == -1 && x2 - x1 == 1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "Black") {
                 squares[x1][y1].setPiece(null);
                 squares[x2][y2].setPiece(tempPiece);
                 turn = "Black";
-            } else if (x2 - x1 == 1 && y2 - y1 == 1 && squares[x2][y2].getPiece().getColor() == "Black") {
+            } else if (y2 - y1 == 1 && x2 - x1 == 1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "Black") {
                 squares[x1][y1].setPiece(null);
                 squares[x2][y2].setPiece(tempPiece);
                 turn = "Black";
@@ -376,4 +399,342 @@ public class BoardGame extends View {
         }
         invalidate();
     }
+    private void blackpawn() {
+        if (tempPawn.getisFirstMove() == true) {
+            if (y2 - y1 == 0 && x2 - x1 == -2 && squares[x2][y2].getPiece() == null && squares[x2+1][y2].getPiece() == null) {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                tempPawn.setFirstMove(false);
+                turn = "White";
+            }
+            else if (y2 - y1 == 0 && x2 - x1 == -1 && squares[x2][y2].getPiece() == null) {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                tempPawn.setFirstMove(false);
+                turn = "White";
+            }
+            else if (y2 - y1 == -1 && x2 - x1 == -1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "White") {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "White";
+            } else if (y2 - y1 == 1 && x2 - x1 == -1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "White") {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "White";
+            }
+
+            else
+            {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+        }
+        else if (tempPawn.getisFirstMove() == false) {
+            if (y2 - y1 == 0 && x2 - x1 == -1 && squares[x2][y2].getPiece() == null) {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "White";
+            } else if (y2 - y1 == -1 && x2 - x1 == -1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "White") {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "White";
+            } else if (y2 - y1 == 1 && x2 - x1 == -1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "White") {
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "White";
+            }
+            else
+            {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+
+        }
+        invalidate();
+    }
+    private void whiteknight() {
+        if (y2 - y1 == 1 && x2 - x1 == 2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")) {
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "Black";
+        }
+        else if (y2 - y1 == 1 && x2 - x1 == -2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "Black";
+        }
+        else if (y2 - y1 == -1 && x2 - x1 == 2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "Black";
+        }
+        else if (y2 - y1 == -1 && x2 - x1 == -2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "Black";
+        }
+        else if (y2 - y1 == 2 && x2 - x1 == 1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "Black";
+        }
+        else if (y2 - y1 == 2 && x2 - x1 == -1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "Black";
+        }
+        else if (y2 - y1 == -2 && x2 - x1 == 1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "Black";
+        }
+        else if (y2 - y1 == -2 && x2 - x1 == -1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "Black";
+        }
+        else{
+            squares[x1][y1].setPiece(tempPiece);
+
+        }
+        invalidate();
+    }
+    private void blackknight() {
+        if (y2 - y1 == 1 && x2 - x1 == 2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")) {
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "White";
+        }
+        else if (y2 - y1 == 1 && x2 - x1 == -2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "White";
+        }
+        else if (y2 - y1 == -1 && x2 - x1 == 2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "White";
+        }
+        else if (y2 - y1 == -1 && x2 - x1 == -2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "White";
+        }
+        else if (y2 - y1 == 2 && x2 - x1 == 1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "White";
+        }
+        else if (y2 - y1 == 2 && x2 - x1 == -1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "White";
+        }
+        else if (y2 - y1 == -2 && x2 - x1 == 1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "White";
+        }
+        else if (y2 - y1 == -2 && x2 - x1 == -1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
+            squares[x1][y1].setPiece(null);
+            squares[x2][y2].setPiece(tempPiece);
+            turn = "White";
+        }
+        else{
+            squares[x1][y1].setPiece(tempPiece);
+        }
+        invalidate();
+    }
+    private void whitebishop() {
+        boolean flag = true;
+        if(squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black"){
+            if(x2-x1==y2-y1&& x2>x1){
+                for (int i = 1; i < x2-x1; i++){
+                    if (squares[x1+i][y1+i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if(x2-x1==y2-y1&& x2<x1){
+                for (int i = 1; i < x1-x2; i++){
+                    if (squares[x1-i][y1-i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x1-x2==y2-y1&& x2>x1){
+                for (int i = 1; i < x2-x1; i++){
+                    if (squares[x1+i][y1-i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x1-x2==y2-y1&& x2<x1){
+                for (int i = 1; i < x1-x2; i++){
+                    if (squares[x1-i][y1+i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else{
+                flag=false;
+            }
+            if (flag == true){
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "Black";
+            }
+            else {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+        }
+        invalidate();
+    }
+    private void blackbishop() {
+        boolean flag = true;
+        if(squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White"){
+            if(x2-x1==y2-y1&& x2>x1){
+                for (int i = 1; i < x2-x1; i++){
+                    if (squares[x1+i][y1+i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if(x2-x1==y2-y1&& x2<x1){
+                for (int i = 1; i < x1-x2; i++){
+                    if (squares[x1-i][y1-i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x1-x2==y2-y1&& x2>x1){
+                for (int i = 1; i < x2-x1; i++){
+                    if (squares[x1+i][y1-i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x1-x2==y2-y1&& x2<x1){
+                for (int i = 1; i < x1-x2; i++){
+                    if (squares[x1-i][y1+i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else{
+                flag=false;
+            }
+            if (flag == true){
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "White";
+            }
+            else {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+        }
+        invalidate();
+    }
+    private void whiterook() {
+        boolean flag = true;
+        if(squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black"){
+            if(y2-y1==0 && x2>x1){
+                for (int i = 1; i < x2-x1; i++){
+                    if (squares[x1+i][y1].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if(y2-y1==0 && x2<x1){
+                for (int i = 1; i < x1-x2; i++){
+                    if (squares[x1-i][y1].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x2-x1==0 && y2>y1){
+                for (int i = 1; i < y2-y1; i++){
+                    if (squares[x1][y1+i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x2-x1==0 && y2<y1){
+                for (int i = 1; i < y1-y2; i++){
+                    if (squares[x1][y1-i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else{
+                flag=false;
+            }
+            if (flag == true){
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "Black";
+            }
+            else {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+        }
+        invalidate();
+    }
+    private void blackrook() {
+        boolean flag = true;
+        if(squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White"){
+            if(y2-y1==0 && x2>x1){
+                for (int i = 1; i < x2-x1; i++){
+                    if (squares[x1+i][y1].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if(y2-y1==0 && x2<x1){
+                for (int i = 1; i < x1-x2; i++){
+                    if (squares[x1-i][y1].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x2-x1==0 && y2>y1){
+                for (int i = 1; i < y2-y1; i++){
+                    if (squares[x1][y1+i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x2-x1==0 && y2<y1){
+                for (int i = 1; i < y1-y2; i++){
+                    if (squares[x1][y1-i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else{
+                flag=false;
+            }
+            if (flag == true){
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "White";
+            }
+            else {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+        }
+        invalidate();
+
+    }
+    private void whitequeen() {
+        whitebishop();
+        whiterook();
+    }
+    private void blackqueen() {
+        blackbishop();
+        blackrook();
+    }
+    private void whiteking() {
+    }
+    private void blackking() {
+    }
+
 }
