@@ -41,10 +41,7 @@ public class BoardGame extends View {
 
     public BoardGame(Context context) {
         super(context);
-
         squares = new Square[NUM_OF_SQUARES][NUM_OF_SQUARES];
-
-
     }
 
     @Override
@@ -55,11 +52,7 @@ public class BoardGame extends View {
             initPieces(canvas);
             firstTime = false;
         }
-
         drawBoard(canvas);
-        //drawCoin(canvas);
-
-
     }
 
     private void initPieces(Canvas canvas) {
@@ -209,7 +202,6 @@ public class BoardGame extends View {
                 } else {
                     tempPiece = null;
                 }
-
             }
         }
         if (event.getAction() == MotionEvent.ACTION_MOVE) {
@@ -225,12 +217,7 @@ public class BoardGame extends View {
                 currY = yloc;
                 userTouchSquareAfter();
             }
-
-//            coin.x = (int)event.getX();
-//            coin.y = (int)event.getY();
-//            updatePieceAfterRelease();
             updatePieceAfterRelease();
-            invalidate();
         }
 
 
@@ -289,15 +276,7 @@ public class BoardGame extends View {
                         tempKing = (King) tempPiece;
                         whiteking();
                     }
-
-
-//                    squares[x1][y1].setPiece(null);
-//                    squares[x2][y2].setPiece(tempPiece);
                 }
-//                if (x1 != x2 || y1 != y2) {
-//                    turn = "Black";
-//                } else turn = "White";
-
             } else if (tempPiece.getColor() == turn && turn == "Black") {
                 if (tempPiece != null) {
                     if (tempPiece instanceof Pawn) {
@@ -319,30 +298,11 @@ public class BoardGame extends View {
                         tempKing = (King) tempPiece;
                         blackking();
                     }
-
-//                    squares[x1][y1].setPiece(null);
-//                    squares[x2][y2].setPiece(tempPiece);
                 }
-//                if (x1 != x2 || y1 != y2) {
-//                    turn = "White";
-//                } else turn = "Black";
             } else if (tempPiece.getColor() != turn) {
                 squares[x1][y1].setPiece(tempPiece);
             }
         }
-//        if(squares[x1][y1].color == Color.BLACK)
-//        {
-//            coin.x = squares[x1][y1].x + coin.getRadius() * 2;
-//            coin.y = squares[x1][y1].y + coin.getRadius() * 2;
-//            coin.setLastX(coin.x);
-//            coin.setLastY(coin.y);
-//        }
-//        else
-//        {
-//            coin.x = coin.getLastX();
-//            coin.y = coin.getLastY();
-//        }
-
     }
 
 
