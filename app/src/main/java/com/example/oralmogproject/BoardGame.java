@@ -16,8 +16,6 @@ public class BoardGame extends View {
     private Context context;
     private String turn = "White";
     private Square[][] squares;
-    private Coin coin;
-    //private final int a = 0, b = 1, c = 2, d = 3, e = 4, f = 5, g = 6, h = 7;
     private int currX, currY, x1, y1, x2, y2;
     private Piece tempPiece;
     private Pawn tempPawn;
@@ -781,11 +779,97 @@ public class BoardGame extends View {
     }
     private void whitequeen() {
         whitebishop();
-        whiterook();
+
+        boolean flag = true;
+        if(squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black"){
+            if(y2-y1==0 && x2>x1){
+                for (int i = 1; i < x2-x1; i++){
+                    if (squares[x1+i][y1].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if(y2-y1==0 && x2<x1){
+                for (int i = 1; i < x1-x2; i++){
+                    if (squares[x1-i][y1].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x2-x1==0 && y2>y1){
+                for (int i = 1; i < y2-y1; i++){
+                    if (squares[x1][y1+i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x2-x1==0 && y2<y1){
+                for (int i = 1; i < y1-y2; i++){
+                    if (squares[x1][y1-i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else{
+                flag=false;
+            }
+            if (flag == true){
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "Black";
+            }
+            else {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+        }
+        invalidate();
     }
     private void blackqueen() {
         blackbishop();
-        blackrook();
+
+        boolean flag = true;
+        if(squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White"){
+            if(y2-y1==0 && x2>x1){
+                for (int i = 1; i < x2-x1; i++){
+                    if (squares[x1+i][y1].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if(y2-y1==0 && x2<x1){
+                for (int i = 1; i < x1-x2; i++){
+                    if (squares[x1-i][y1].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x2-x1==0 && y2>y1){
+                for (int i = 1; i < y2-y1; i++){
+                    if (squares[x1][y1+i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else if (x2-x1==0 && y2<y1){
+                for (int i = 1; i < y1-y2; i++){
+                    if (squares[x1][y1-i].getPiece()!=null){
+                        flag = false;
+                    }
+                }
+            }
+            else{
+                flag=false;
+            }
+            if (flag == true){
+                squares[x1][y1].setPiece(null);
+                squares[x2][y2].setPiece(tempPiece);
+                turn = "White";
+            }
+            else {
+                squares[x1][y1].setPiece(tempPiece);
+            }
+        }
+        invalidate();
     }
     private void whiteking() {
         boolean flag = true;
@@ -851,7 +935,7 @@ public class BoardGame extends View {
                         squares[x1][y1].setPiece(null);
                         squares[x2][y2].setPiece(null);
                         squares[x1][y1+2].setPiece(tempKing);
-                        squares[x1][y1+1].setPiece(tempPiece);
+                        squares[x1][y1+1].setPiece(tempRook);
                         turn = "Black";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
@@ -871,7 +955,7 @@ public class BoardGame extends View {
                         squares[x1][y1].setPiece(null);
                         squares[x2][y2].setPiece(null);
                         squares[x1][y1-2].setPiece(tempKing);
-                        squares[x2][y2-1].setPiece(tempPiece);
+                        squares[x1][y1-1].setPiece(tempRook);
                         turn = "Black";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
@@ -951,7 +1035,7 @@ public class BoardGame extends View {
                         squares[x1][y1].setPiece(null);
                         squares[x2][y2].setPiece(null);
                         squares[x1][y1+2].setPiece(tempKing);
-                        squares[x1][y1+1].setPiece(tempPiece);
+                        squares[x1][y1+1].setPiece(tempRook);
                         turn = "White";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
@@ -971,7 +1055,7 @@ public class BoardGame extends View {
                         squares[x1][y1].setPiece(null);
                         squares[x2][y2].setPiece(null);
                         squares[x1][y1-2].setPiece(tempKing);
-                        squares[x2][y2-1].setPiece(tempPiece);
+                        squares[x1][y1-1].setPiece(tempRook);
                         turn = "White";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
