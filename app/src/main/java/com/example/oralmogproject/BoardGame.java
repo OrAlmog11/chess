@@ -987,5 +987,4 @@ public class BoardGame extends View {
         }
         invalidate();
     }
-
 }
