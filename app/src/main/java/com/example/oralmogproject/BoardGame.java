@@ -306,7 +306,6 @@ public class BoardGame extends View {
 
 
 
-
     private void whitepawn() {
         if (tempPawn.getisFirstMove() == true) {
             if (y2 - y1 == 0 && x2 - x1 == 2 && squares[x2][y2].getPiece() == null && squares[x2-1][y2].getPiece() == null) {
