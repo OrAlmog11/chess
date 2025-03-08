@@ -2,6 +2,7 @@ package com.example.oralmogproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,4 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(boardGame);
 
     }
+//    protected static void restartGame(Context context){
+//        BoardGame boardGame = new BoardGame(context);
+//    }
 }
