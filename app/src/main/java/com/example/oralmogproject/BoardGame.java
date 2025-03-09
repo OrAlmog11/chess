@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -1340,12 +1341,16 @@ public class BoardGame extends View {
         invalidate();
     }
     private void whitewon() {
-//        white_win_count++;
-//        MainActivity.restartGame(context);
+        white_win_count++;
+        firstTime = true;
+        invalidate();
+        //        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
     }
     private void blackwon() {
-//        black_win_count++;
-//        MainActivity.restartGame(context);
+        black_win_count++;
+        firstTime = true;
+        invalidate();
+//        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
     }
 
 }

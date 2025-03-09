@@ -1,4 +1,17 @@
 package com.example.oralmogproject;
 
-public class GameActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class GameActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main);
+        BoardGame boardGame = new BoardGame(this);
+        setContentView(boardGame);
+
+    }
 }
