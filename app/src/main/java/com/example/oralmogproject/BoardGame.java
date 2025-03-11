@@ -1,10 +1,12 @@
 package com.example.oralmogproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.support.v4.os.IResultReceiver;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -1341,12 +1343,17 @@ public class BoardGame extends View {
         invalidate();
     }
     private void whitewon() {
+        //Dialog(); TODO DIALOG
         white_win_count++;
         firstTime = true;
         invalidate();
+//        Intent intent = new Intent();
+//        setResult(RESULT_OK, intent);
+//        finish();
         //        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
     }
     private void blackwon() {
+        //Dialog(); TODO DIALOG
         black_win_count++;
         firstTime = true;
         invalidate();
