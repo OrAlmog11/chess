@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
 
+    FbModule fbModule;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,11 +22,17 @@ public class GameActivity extends AppCompatActivity {
         BoardGame boardGame = new BoardGame(this);
         setContentView(boardGame);
 
+        fbModule = new FbModule(this);
+
+
     }
+
+
 
 
     public void resultToMainActivity()
     {
+
         Intent intent = new Intent();
         intent.putExtra("ColorWin","Black");
         setResult(RESULT_OK,intent);

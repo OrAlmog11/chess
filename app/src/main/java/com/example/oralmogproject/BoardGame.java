@@ -316,12 +316,14 @@ public class BoardGame extends View {
             if (y2 - y1 == 0 && x2 - x1 == 2 && squares[x2][y2].getPiece() == null && squares[x2-1][y2].getPiece() == null) {
                 squares[x1][y1].setPiece(null);
                 squares[x2][y2].setPiece(tempPiece);
+                Move move = new Move(x1,y1,x2,y2);
                 tempPawn.setFirstMove(false);
                 turn = "Black";
             }
             else if (y2 - y1 == 0 && x2 - x1 == 1 && squares[x2][y2].getPiece() == null) {
                 squares[x1][y1].setPiece(null);
                 squares[x2][y2].setPiece(tempPiece);
+
                 tempPawn.setFirstMove(false);
                 turn = "Black";
             }
@@ -1342,6 +1344,15 @@ public class BoardGame extends View {
         }
         invalidate();
     }
+
+    public void setMove (Move move){
+        int beforeX = move.getOldX();
+        int beforeY = move.getOldY();
+        int afterX = move.getNewX();
+        int afterY = move.getNewY();
+        squares[afterX][afterY].setPiece(squares[beforeX][beforeY].getPiece());
+        squares[beforeX][beforeY].setPiece(null);
+    }
     private void whitewon() {
         //Dialog(); TODO DIALOG
         white_win_count++;
@@ -1359,5 +1370,7 @@ public class BoardGame extends View {
         invalidate();
 //        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
     }
+
+
 
 }
