@@ -32,7 +32,7 @@ public class FbModule
                 Move move = snapshot.getValue(Move.class);
                 //Toast.makeText(context, "onDataChange " + play, Toast.LENGTH_SHORT).show();
                 if(move != null){
-                    (BoardGame(context)).setMove(move);
+                    ((GameActivity)context).setMove(move);
                 }
             }
 

@@ -1,16 +1,12 @@
 package com.example.oralmogproject;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.support.v4.os.IResultReceiver;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -42,9 +38,10 @@ public class BoardGame extends View {
     private int w, h;
 
 
-    public BoardGame(Context context) {
+    public BoardGame(Context context, String color) {
         super(context);
         squares = new Square[NUM_OF_SQUARES][NUM_OF_SQUARES];
+        this.context = context;
     }
 
     @Override
@@ -319,6 +316,7 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 tempPawn.setFirstMove(false);
                 turn = "Black";
+                ((GameActivity)context).setNewMoveToFb(move);
             }
             else if (y2 - y1 == 0 && x2 - x1 == 1 && squares[x2][y2].getPiece() == null) {
                 squares[x1][y1].setPiece(null);

@@ -2,6 +2,9 @@ package com.example.oralmogproject;
 
 public class Move {
 
+    public Move() {
+    }
+
     public Move(int oldX, int oldY, int newX, int newY){
 
         this.oldX=oldX;

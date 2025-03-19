@@ -7,6 +7,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnPlayOnline, btnPlayOffline;
+    SoundPool soundPool;
+    int sound1;
+
 
     private ActivityResultLauncher<Intent> activityResultLauncher;
     @Override
@@ -26,6 +31,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnPlayOffline = findViewById(R.id.btnPlayOffline);
         btnPlayOffline.setOnClickListener(this);
+        soundPool = new SoundPool(3,AudioManager.STREAM_MUSIC,0);
+
+        sound1 = soundPool.load(this,R.raw.zapsplat_cartoon3,1);
+        soundPool.play(sound1,1,1,0,0,1);
 
         activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -52,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v==btnPlayOnline)
         {
             Intent i = new Intent(this, GameActivity.class);
+            i.putExtra("PlayerColor", "White");
             activityResultLauncher.launch(i);
         }
 
