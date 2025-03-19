@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "731671034267",
+    "firebase_url": "https://chess-43c03-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "chess-43c03",
+    "storage_bucket": "chess-43c03.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731671034267:android:5d4a697cfbb424ad74c93e",
+        "android_client_info": {
+          "package_name": "com.example.oralmogproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACSVfGQ1gwmlz6WfgjSqYs0zU5UwxPtO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
