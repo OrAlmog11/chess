@@ -317,6 +317,7 @@ public class BoardGame extends View {
                 tempPawn.setFirstMove(false);
                 turn = "Black";
                 ((GameActivity)context).setNewMoveToFb(move);
+                ((GameActivity)context).setSound();
             }
             else if (y2 - y1 == 0 && x2 - x1 == 1 && squares[x2][y2].getPiece() == null) {
                 squares[x1][y1].setPiece(null);
@@ -1350,6 +1351,7 @@ public class BoardGame extends View {
         int afterY = move.getNewY();
         squares[afterX][afterY].setPiece(squares[beforeX][beforeY].getPiece());
         squares[beforeX][beforeY].setPiece(null);
+        invalidate();
     }
     private void whitewon() {
         //Dialog(); TODO DIALOG
