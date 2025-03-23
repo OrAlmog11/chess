@@ -37,7 +37,13 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-
+    private void createDialog() {
+        if(!this.isFinishing())
+        {
+            CustomDialog customDialog = new CustomDialog(this);
+            customDialog.show();
+        }
+    }
 
     public void resultToMainActivity(String color) // TODO win count + dialog + המשך
     {
@@ -45,7 +51,8 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.putExtra("ColorWin",color);
         setResult(RESULT_OK,intent);
-        finish();
+        createDialog();
+//        finish();
     }
 
     public void setMove(Move move) {
