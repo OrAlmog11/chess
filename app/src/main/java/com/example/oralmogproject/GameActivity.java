@@ -39,11 +39,11 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-    public void resultToMainActivity()
+    public void resultToMainActivity(String color) // TODO win count + dialog + המשך
     {
 
         Intent intent = new Intent();
-        intent.putExtra("ColorWin","Black");
+        intent.putExtra("ColorWin",color);
         setResult(RESULT_OK,intent);
         finish();
     }
