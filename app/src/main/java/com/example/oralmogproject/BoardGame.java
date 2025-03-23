@@ -12,8 +12,6 @@ import androidx.annotation.NonNull;
 
 
 public class BoardGame extends View {
-    private int white_win_count = 0;
-    private int black_win_count = 0;
     private Context context;
     private String turn = "White";
     private Square[][] squares;
@@ -42,6 +40,7 @@ public class BoardGame extends View {
         super(context);
         squares = new Square[NUM_OF_SQUARES][NUM_OF_SQUARES];
         this.context = context;
+        String turncolor = color;
     }
 
     @Override
@@ -311,39 +310,15 @@ public class BoardGame extends View {
     private void whitepawn() {
         if (tempPawn.getisFirstMove() == true) {
             if (y2 - y1 == 0 && x2 - x1 == 2 && squares[x2][y2].getPiece() == null && squares[x2-1][y2].getPiece() == null) {
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                Move move = new Move(x1,y1,x2,y2);
-                tempPawn.setFirstMove(false);
-                turn = "Black";
-                ((GameActivity)context).setNewMoveToFb(move);
-                ((GameActivity)context).setSound();
+                whitepawnfirstmove();
             }
             else if (y2 - y1 == 0 && x2 - x1 == 1 && squares[x2][y2].getPiece() == null) {
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-
-                tempPawn.setFirstMove(false);
-                turn = "Black";
+                whitepawnfirstmove();
             }
             else if (y2 - y1 == -1 && x2 - x1 == 1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "Black") {
-                if(squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    whitewon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                turn = "Black";
+                whitepawnfirstmove();
             } else if (y2 - y1 == 1 && x2 - x1 == 1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "Black") {
-                if(squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    whitewon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                turn = "Black";
+                whitepawnfirstmove();
             }
             else
             {
@@ -352,45 +327,11 @@ public class BoardGame extends View {
         }
         else if (tempPawn.getisFirstMove() == false) {
             if (y2 - y1 == 0 && x2 - x1 == 1 && squares[x2][y2].getPiece() == null) {
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                if(x2==7)
-                {
-                    Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
-                    wq = Bitmap.createScaledBitmap(wq, w, w, true);
-                    squares[x2][y2].setPiece(new Queen(wq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
-                }
-                turn = "Black";
+                whitepawnmove();
             } else if (y2 - y1 == -1 && x2 - x1 == 1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "Black") {
-                if(squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    whitewon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                if(x2==7)
-                {
-                    Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
-                    wq = Bitmap.createScaledBitmap(wq, w, w, true);
-                    squares[x2][y2].setPiece(new Queen(wq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
-                }
-                turn = "Black";
+                whitepawnmove();
             } else if (y2 - y1 == 1 && x2 - x1 == 1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "Black") {
-                if(squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    whitewon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                if(x2==7)
-                {
-                    Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
-                    wq = Bitmap.createScaledBitmap(wq, w, w, true);
-                    squares[x2][y2].setPiece(new Queen(wq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
-                }
-                turn = "Black";
+                whitepawnmove();
             }
             else
             {
@@ -400,38 +341,40 @@ public class BoardGame extends View {
         }
         invalidate();
     }
+    private void whitepawnfirstmove() {
+        tempPawn.setFirstMove(false);
+        turn = "Black";
+        Move move = new Move(x1,y1,x2,y2);
+        ((GameActivity)context).setNewMoveToFb(move);
+        ((GameActivity)context).setSound();
+    }
+    private void whitepawnmove() {
+        turn = "Black";
+        if(x2==7)
+        {
+            Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
+            wq = Bitmap.createScaledBitmap(wq, w, w, true);
+            squares[x2][y2].setPiece(new Queen(wq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
+        }
+        Move move = new Move(x1,y1,x2,y2);
+        ((GameActivity)context).setNewMoveToFb(move);
+        ((GameActivity)context).setSound();
+    }
+
+
+
     private void blackpawn() {
         if (tempPawn.getisFirstMove() == true) {
             if (y2 - y1 == 0 && x2 - x1 == -2 && squares[x2][y2].getPiece() == null && squares[x2+1][y2].getPiece() == null) {
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                tempPawn.setFirstMove(false);
-                turn = "White";
+                blackpawnfirstmove();
             }
             else if (y2 - y1 == 0 && x2 - x1 == -1 && squares[x2][y2].getPiece() == null) {
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                tempPawn.setFirstMove(false);
-                turn = "White";
+                blackpawnfirstmove();
             }
             else if (y2 - y1 == -1 && x2 - x1 == -1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "White") {
-                if(squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    blackwon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                turn = "White";
+                blackpawnfirstmove();
             } else if (y2 - y1 == 1 && x2 - x1 == -1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "White") {
-                if(squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    blackwon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                turn = "White";
+                blackpawnfirstmove();
             }
 
             else
@@ -441,45 +384,11 @@ public class BoardGame extends View {
         }
         else if (tempPawn.getisFirstMove() == false) {
             if (y2 - y1 == 0 && x2 - x1 == -1 && squares[x2][y2].getPiece() == null) {
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                if(x2==0)
-                {
-                    Bitmap bq = BitmapFactory.decodeResource(getResources(), R.drawable.black_queen);
-                    bq = Bitmap.createScaledBitmap(bq, w, w, true);
-                    squares[x2][y2].setPiece(new Queen(bq, "Black", squares[x2][y2].getX(), squares[x2][y2].getY()));
-                }
-                turn = "White";
+                    blackpawnmove();
             } else if (y2 - y1 == -1 && x2 - x1 == -1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "White") {
-                if(squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    blackwon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                if(x2==0)
-                {
-                    Bitmap bq = BitmapFactory.decodeResource(getResources(), R.drawable.black_queen);
-                    bq = Bitmap.createScaledBitmap(bq, w, w, true);
-                    squares[x2][y2].setPiece(new Queen(bq, "Black", squares[x2][y2].getX(), squares[x2][y2].getY()));
-                }
-                turn = "White";
+                blackpawnmove();
             } else if (y2 - y1 == 1 && x2 - x1 == -1 && squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece().getColor() == "White") {
-                if(squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    blackwon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
-                if(x2==0)
-                {
-                    Bitmap bq = BitmapFactory.decodeResource(getResources(), R.drawable.black_queen);
-                    bq = Bitmap.createScaledBitmap(bq, w, w, true);
-                    squares[x2][y2].setPiece(new Queen(bq, "Black", squares[x2][y2].getX(), squares[x2][y2].getY()));
-                }
-                turn = "White";
+                blackpawnmove();
             }
             else
             {
@@ -489,86 +398,51 @@ public class BoardGame extends View {
         }
         invalidate();
     }
+    private void blackpawnfirstmove() {
+        tempPawn.setFirstMove(false);
+        turn = "White";
+        Move move = new Move(x1,y1,x2,y2);
+        ((GameActivity)context).setNewMoveToFb(move);
+        ((GameActivity)context).setSound();
+    }
+    private void blackpawnmove() {
+        turn = "White";
+        if(x2==0)
+        {
+            Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
+            wq = Bitmap.createScaledBitmap(wq, w, w, true);
+            squares[x2][y2].setPiece(new Queen(wq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
+        }
+        Move move = new Move(x1,y1,x2,y2);
+        ((GameActivity)context).setNewMoveToFb(move);
+        ((GameActivity)context).setSound();
+    }
+
+
     private void whiteknight() {
         if (y2 - y1 == 1 && x2 - x1 == 2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")) {
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                whitewon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "Black";
+            whiteknightmove();
         }
         else if (y2 - y1 == 1 && x2 - x1 == -2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                whitewon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "Black";
+            whiteknightmove();
         }
         else if (y2 - y1 == -1 && x2 - x1 == 2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                whitewon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "Black";
+            whiteknightmove();
         }
         else if (y2 - y1 == -1 && x2 - x1 == -2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                whitewon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "Black";
+            whiteknightmove();
         }
         else if (y2 - y1 == 2 && x2 - x1 == 1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                whitewon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "Black";
+            whiteknightmove();
         }
         else if (y2 - y1 == 2 && x2 - x1 == -1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                whitewon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "Black";
+            whiteknightmove();
         }
         else if (y2 - y1 == -2 && x2 - x1 == 1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                whitewon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "Black";
+            whiteknightmove();
         }
         else if (y2 - y1 == -2 && x2 - x1 == -1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                whitewon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "Black";
+            whiteknightmove();
         }
         else{
             squares[x1][y1].setPiece(tempPiece);
@@ -576,93 +450,53 @@ public class BoardGame extends View {
         }
         invalidate();
     }
+
+    private void whiteknightmove() {
+        Move move = new Move(x1,y1,x2,y2);
+        ((GameActivity)context).setNewMoveToFb(move);
+        ((GameActivity)context).setSound();
+        turn = "Black";
+    }
+
     private void blackknight() {
         if (y2 - y1 == 1 && x2 - x1 == 2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")) {
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                blackwon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "White";
+            blackknightmove();
         }
         else if (y2 - y1 == 1 && x2 - x1 == -2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                blackwon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "White";
-
+            blackknightmove();
         }
         else if (y2 - y1 == -1 && x2 - x1 == 2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                blackwon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "White";
+            blackknightmove();
         }
         else if (y2 - y1 == -1 && x2 - x1 == -2 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                blackwon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "White";
+            blackknightmove();
         }
         else if (y2 - y1 == 2 && x2 - x1 == 1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                blackwon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "White";
+            blackknightmove();
         }
         else if (y2 - y1 == 2 && x2 - x1 == -1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                blackwon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "White";
+            blackknightmove();
         }
         else if (y2 - y1 == -2 && x2 - x1 == 1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                blackwon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "White";
+            blackknightmove();
         }
         else if (y2 - y1 == -2 && x2 - x1 == -1 && (squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "White")){
-            if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-            {
-                // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                blackwon();
-            }
-            squares[x1][y1].setPiece(null);
-            squares[x2][y2].setPiece(tempPiece);
-            turn = "White";
+
+            blackknightmove();
         }
         else{
             squares[x1][y1].setPiece(tempPiece);
         }
         invalidate();
     }
+
+    private void blackknightmove() {
+        Move move = new Move(x1,y1,x2,y2);
+        ((GameActivity)context).setNewMoveToFb(move);
+        ((GameActivity)context).setSound();
+        turn = "White";
+    }
+
     private void whitebishop() {
         boolean flag = true;
         if(squares[x2][y2].getPiece() == null || squares[x2][y2].getPiece().getColor() == "Black"){
@@ -698,13 +532,9 @@ public class BoardGame extends View {
                 flag=false;
             }
             if (flag == true){
-                if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    whitewon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
+                Move move = new Move(x1,y1,x2,y2);
+                ((GameActivity)context).setNewMoveToFb(move);
+                ((GameActivity)context).setSound();
                 turn = "Black";
             }
             else {
@@ -748,13 +578,9 @@ public class BoardGame extends View {
                 flag=false;
             }
             if (flag == true){
-                if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    blackwon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
+                Move move = new Move(x1,y1,x2,y2);
+                ((GameActivity)context).setNewMoveToFb(move);
+                ((GameActivity)context).setSound();
                 turn = "White";
             }
             else {
@@ -799,13 +625,9 @@ public class BoardGame extends View {
                 flag=false;
             }
             if (flag == true){
-                if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    whitewon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
+                Move move = new Move(x1,y1,x2,y2);
+                ((GameActivity)context).setNewMoveToFb(move);
+                ((GameActivity)context).setSound();
                 turn = "Black";
                 tempRook.setFirstMove(false);
             }
@@ -858,7 +680,7 @@ public class BoardGame extends View {
 
         }
         invalidate();
-    }
+    } // TODO CASTLING
     private void blackrook() {
         boolean flag = true;
         tempRook = (Rook) squares[x1][y1].getPiece();
@@ -958,7 +780,7 @@ public class BoardGame extends View {
         }
         invalidate();
 
-    }
+    } // TODO CASTLING
     private void whitequeen() {
         whitebishop();
 
@@ -996,13 +818,9 @@ public class BoardGame extends View {
                 flag=false;
             }
             if (flag == true){
-                if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    whitewon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
+                Move move = new Move(x1,y1,x2,y2);
+                ((GameActivity)context).setNewMoveToFb(move);
+                ((GameActivity)context).setSound();
                 turn = "Black";
             }
             else {
@@ -1048,13 +866,9 @@ public class BoardGame extends View {
                 flag=false;
             }
             if (flag == true){
-                if(squares[x2][y2].getPiece()!=null && squares[x2][y2].getPiece() instanceof King)
-                {
-                    // TODO WIN DIALOG כתבתי בוואצאפ עוד הנחיות
-                    blackwon();
-                }
-                squares[x1][y1].setPiece(null);
-                squares[x2][y2].setPiece(tempPiece);
+                Move move = new Move(x1,y1,x2,y2);
+                ((GameActivity)context).setNewMoveToFb(move);
+                ((GameActivity)context).setSound();
                 turn = "White";
             }
             else {
@@ -1344,18 +1158,25 @@ public class BoardGame extends View {
         invalidate();
     }
 
-    public void setMove (Move move){
+    public void setMove (Move move){ // sort by colors
         int beforeX = move.getOldX();
         int beforeY = move.getOldY();
         int afterX = move.getNewX();
         int afterY = move.getNewY();
+        if(squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor() == "Black" && squares[beforeX][beforeY].getPiece().getColor() == "White")
+        {
+            whitewon();
+        }
+        else if(squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor() == "White" && squares[beforeX][beforeY].getPiece().getColor() == "Black")
+        {
+            blackwon();
+        }
         squares[afterX][afterY].setPiece(squares[beforeX][beforeY].getPiece());
         squares[beforeX][beforeY].setPiece(null);
         invalidate();
     }
     private void whitewon() {
         //Dialog(); TODO DIALOG
-        white_win_count++;
         firstTime = true;
         invalidate();
 //        Intent intent = new Intent();
@@ -1365,7 +1186,6 @@ public class BoardGame extends View {
     }
     private void blackwon() {
         //Dialog(); TODO DIALOG
-        black_win_count++;
         firstTime = true;
         invalidate();
 //        Toast.makeText(context, "", Toast.LENGTH_SHORT).show();

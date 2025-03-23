@@ -17,6 +17,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnPlayOnline, btnPlayOffline;
+    private int white_win_count = 0;
+    private int black_win_count = 0;
 
     private ActivityResultLauncher<Intent> activityResultLauncher;
     @Override
