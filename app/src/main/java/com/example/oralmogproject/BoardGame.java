@@ -651,12 +651,12 @@ public class BoardGame extends View {
                         Move move = new Move(x1,y1,x2,y2+1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
+                        turn = "White";
 //                        squares[x1][y1].setPiece(null);
 //                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(0,3,0,5);
                         ((GameActivity)context).setNewMoveToFb(newmove);
 //                        squares[x2][y2+1].setPiece(tempKing);
-                        turn = "Black";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -675,12 +675,12 @@ public class BoardGame extends View {
                         Move move = new Move(x1,y1,x2,y2-1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
+                        turn = "White";
 //                        squares[x1][y1].setPiece(null);
 //                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(0,3,0,1);
                         ((GameActivity)context).setNewMoveToFb(newmove);
 //                        squares[x2][y2-1].setPiece(tempKing);
-                        turn = "Black";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -754,12 +754,12 @@ public class BoardGame extends View {
                         Move move = new Move(x1,y1,x2,y2+1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
+                        turn = "Black";
 //                        squares[x1][y1].setPiece(null);
 //                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(7,3,7,5);
                         ((GameActivity)context).setNewMoveToFb(newmove);
 //                        squares[x2][y2+1].setPiece(tempKing);
-                        turn = "White";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -778,12 +778,12 @@ public class BoardGame extends View {
                         Move move = new Move(x1,y1,x2,y2-1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
+                        turn = "Black";
 //                        squares[x1][y1].setPiece(null);
 //                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(7,3,7,1);
                         ((GameActivity)context).setNewMoveToFb(newmove);
 //                        squares[x2][y2-1].setPiece(tempKing);
-                        turn = "White";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -933,12 +933,12 @@ public class BoardGame extends View {
                         Move move = new Move(0,3,0,5);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
+                        turn = "White";
 //                        squares[x1][y1].setPiece(null);
 //                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(0,7,0,4);
                         ((GameActivity)context).setNewMoveToFb(newmove);
 //                        squares[x2][y2+1].setPiece(tempKing);
-                        turn = "Black";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -957,12 +957,12 @@ public class BoardGame extends View {
                         Move move = new Move(0,3,0,1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
+                        turn = "White";
 //                        squares[x1][y1].setPiece(null);
 //                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(0,0,0,2);
                         ((GameActivity)context).setNewMoveToFb(newmove);
 //                        squares[x2][y2+1].setPiece(tempKing);
-                        turn = "Black";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -1026,12 +1026,12 @@ public class BoardGame extends View {
                         Move move = new Move(7,3,7,5);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
+                        turn = "Black";
 //                        squares[x1][y1].setPiece(null);
 //                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(7,7,7,4);
                         ((GameActivity)context).setNewMoveToFb(newmove);
 //                        squares[x2][y2+1].setPiece(tempKing);
-                        turn = "White";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -1050,12 +1050,12 @@ public class BoardGame extends View {
                         Move move = new Move(7,3,7,1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
+                        turn = "Black";
 //                        squares[x1][y1].setPiece(null);
 //                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(7,0,7,2);
                         ((GameActivity)context).setNewMoveToFb(newmove);
 //                        squares[x2][y2+1].setPiece(tempKing);
-                        turn = "White";
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -1084,11 +1084,11 @@ public class BoardGame extends View {
         int beforeY = move.getOldY();
         int afterX = move.getNewX();
         int afterY = move.getNewY();
-        if(squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor() == "Black" && squares[beforeX][beforeY].getPiece().getColor() == "White")
+        if(squares[afterX][afterY].getPiece()!=null && squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor() == "Black" && squares[beforeX][beforeY].getPiece().getColor() == "White")
         {
             whitewon();
         }
-        else if(squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor() == "White" && squares[beforeX][beforeY].getPiece().getColor() == "Black")
+        else if(squares[afterX][afterY].getPiece()!=null && squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor() == "White" && squares[beforeX][beforeY].getPiece().getColor() == "Black")
         {
             blackwon();
         }
