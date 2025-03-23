@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 public class BoardGame extends View {
     private Context context;
     private String turn = "White";
+    private String  turncolor;
     private Square[][] squares;
     private int currX, currY, x1, y1, x2, y2;
     private Piece tempPiece;
@@ -40,7 +41,7 @@ public class BoardGame extends View {
         super(context);
         squares = new Square[NUM_OF_SQUARES][NUM_OF_SQUARES];
         this.context = context;
-        String turncolor = color;
+        turncolor = color;
     }
 
     @Override
@@ -254,7 +255,7 @@ public class BoardGame extends View {
     private void updatePieceAfterRelease() // בודק אם המהלך חוקי ואם כן משנה בהתאם ואם לא מחזיר את המצב לקדמותו
     {
         if (tempPiece != null) {
-            if (tempPiece.getColor() == turn && turn == "White") {
+            if (tempPiece.getColor() == turn && turn == "White" && turncolor == turn) {
                 if (tempPiece != null) {
                     if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;
@@ -276,7 +277,8 @@ public class BoardGame extends View {
                         whiteking();
                     }
                 }
-            } else if (tempPiece.getColor() == turn && turn == "Black") {
+
+            } else if (tempPiece.getColor() == turn && turn == "Black" && turncolor == turn) {
                 if (tempPiece != null) {
                     if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;
@@ -343,13 +345,13 @@ public class BoardGame extends View {
     }
     private void whitepawnfirstmove() {
         tempPawn.setFirstMove(false);
-        turn = "Black";
+//        turn = "Black";
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
     }
     private void whitepawnmove() {
-        turn = "Black";
+//        turn = "Black";
         if(x2==7)
         {
             Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
@@ -400,13 +402,13 @@ public class BoardGame extends View {
     }
     private void blackpawnfirstmove() {
         tempPawn.setFirstMove(false);
-        turn = "White";
+//        turn = "White";
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
     }
     private void blackpawnmove() {
-        turn = "White";
+//        turn = "White";
         if(x2==0)
         {
             Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
@@ -455,7 +457,7 @@ public class BoardGame extends View {
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
-        turn = "Black";
+//        turn = "Black";
     }
 
     private void blackknight() {
@@ -494,7 +496,7 @@ public class BoardGame extends View {
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
-        turn = "White";
+//        turn = "White";
     }
 
     private void whitebishop() {
@@ -535,7 +537,7 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-                turn = "Black";
+//                turn = "Black";
             }
             else {
                 squares[x1][y1].setPiece(tempPiece);
@@ -581,7 +583,7 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-                turn = "White";
+//                turn = "White";
             }
             else {
                 squares[x1][y1].setPiece(tempPiece);
@@ -628,7 +630,7 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-                turn = "Black";
+//                turn = "Black";
                 tempRook.setFirstMove(false);
             }
             else {
@@ -731,7 +733,7 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-                turn = "White";
+//                turn = "White";
                 tempRook.setFirstMove(false);
             }
             else {
@@ -835,7 +837,7 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-                turn = "Black";
+//                turn = "Black";
             }
             else {
                 squares[x1][y1].setPiece(tempPiece);
@@ -883,7 +885,7 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-                turn = "White";
+//                turn = "White";
             }
             else {
                 squares[x1][y1].setPiece(tempPiece);
@@ -980,7 +982,7 @@ public class BoardGame extends View {
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
-        turn = "Black";
+//        turn = "Black";
         tempKing.setFirstMove(false);
     }
 
@@ -1073,7 +1075,7 @@ public class BoardGame extends View {
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
-        turn = "White";
+//        turn = "White";
         tempKing.setFirstMove(false);
     }
 
@@ -1092,6 +1094,12 @@ public class BoardGame extends View {
         }
         squares[afterX][afterY].setPiece(squares[beforeX][beforeY].getPiece());
         squares[beforeX][beforeY].setPiece(null);
+        if (turn == "White"){
+            turn = "Black";
+        }
+        else if (turn == "Black"){
+            turn = "White";
+        }
         invalidate();
     }
     private void whitewon() {
