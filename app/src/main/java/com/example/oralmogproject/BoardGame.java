@@ -255,7 +255,7 @@ public class BoardGame extends View {
     private void updatePieceAfterRelease() // בודק אם המהלך חוקי ואם כן משנה בהתאם ואם לא מחזיר את המצב לקדמותו
     {
         if (tempPiece != null) {
-            if (tempPiece.getColor() == turn && turn == "White" && turncolor == turn) {
+            if (tempPiece.getColor() == turn && turn == "White" && turncolor.equals(turn)) {
                 if (tempPiece != null) {
                     if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;
@@ -278,7 +278,7 @@ public class BoardGame extends View {
                     }
                 }
 
-            } else if (tempPiece.getColor() == turn && turn == "Black" && turncolor == turn) {
+            } else if (tempPiece.getColor() == turn && turn == "Black" && turncolor.equals(turn)) {
                 if (tempPiece != null) {
                     if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;

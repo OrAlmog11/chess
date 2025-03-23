@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if(colorwon == "Black"){
             black_win_count++;
-            Toast.makeText(this, "Black won! Black have" + white_win_count + "wins!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Black won! Black have" + black_win_count + "wins!", Toast.LENGTH_SHORT).show();
         }
     }
 
