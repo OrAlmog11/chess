@@ -255,7 +255,7 @@ public class BoardGame extends View {
     private void updatePieceAfterRelease() // בודק אם המהלך חוקי ואם כן משנה בהתאם ואם לא מחזיר את המצב לקדמותו
     {
         if (tempPiece != null) {
-            if (tempPiece.getColor() == turn && turn == "White" && turncolor.equals(turn)) {
+            if (tempPiece.getColor().equals(turn) && turn.equals("White") && turncolor.equals(turn)) {
                 if (tempPiece != null) {
                     if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;
@@ -278,7 +278,7 @@ public class BoardGame extends View {
                     }
                 }
 
-            } else if (tempPiece.getColor() == turn && turn == "Black" && turncolor.equals(turn)) {
+            } else if (tempPiece.getColor().equals(turn) && turn.equals("Black") && turncolor.equals(turn)) {
                 if (tempPiece != null) {
                     if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;
@@ -1079,25 +1079,25 @@ public class BoardGame extends View {
         tempKing.setFirstMove(false);
     }
 
-    public void setMove (Move move){ // sort by colors
+    public void setMove (Move move){ // sorted by colors
         int beforeX = move.getOldX();
         int beforeY = move.getOldY();
         int afterX = move.getNewX();
         int afterY = move.getNewY();
-        if(squares[afterX][afterY].getPiece()!=null && squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor() == "Black" && squares[beforeX][beforeY].getPiece().getColor() == "White")
+        if(squares[afterX][afterY].getPiece()!=null && squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor().equals("Black") && squares[beforeX][beforeY].getPiece().getColor().equals("White"))
         {
             whitewon();
         }
-        else if(squares[afterX][afterY].getPiece()!=null && squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor() == "White" && squares[beforeX][beforeY].getPiece().getColor() == "Black")
+        else if(squares[afterX][afterY].getPiece()!=null && squares[afterX][afterY].getPiece() instanceof King && squares[afterX][afterY].getPiece().getColor().equals("White") && squares[beforeX][beforeY].getPiece().getColor().equals("Black"))
         {
             blackwon();
         }
         squares[afterX][afterY].setPiece(squares[beforeX][beforeY].getPiece());
         squares[beforeX][beforeY].setPiece(null);
-        if (turn == "White"){
+        if (turn.equals("White")){
             turn = "Black";
         }
-        else if (turn == "Black"){
+        else if (turn.equals("Black")){
             turn = "White";
         }
         invalidate();
