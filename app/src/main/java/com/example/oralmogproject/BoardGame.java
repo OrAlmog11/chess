@@ -32,7 +32,6 @@ public class BoardGame extends View {
 
     private final int NUM_OF_SQUARES = 8;
 
-    private Bitmap bitmap;
     private boolean firstTime = true;
     private int w, h;
 
