@@ -12,7 +12,6 @@ public class Square{
     Piece piece;
 
     public Square(int x, int y, int w, int h, int color) {
-//        super(x, y, color);
         this.x = x;
         this.y = y;
         this.w = w;
