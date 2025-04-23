@@ -2,14 +2,17 @@ package com.example.oralmogproject;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 public class CustomDialog extends Dialog implements View.OnClickListener {
     Button btnOk;
     Context context;
+
 
     public CustomDialog(@NonNull Context context) {
         super(context);
@@ -19,6 +22,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
 
         btnOk = findViewById(R.id.btnOk);
         btnOk.setOnClickListener(this);
+
     }
 
 

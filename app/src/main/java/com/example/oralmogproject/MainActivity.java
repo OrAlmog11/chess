@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnPlayOnline, btnPlayOffline;
+    Button btnPlayOnlineWhite, btnPlayOnlineBlack, btnPlayOffline;
     private String colorwon;
     private int white_win_count = 0;
     private int black_win_count = 0;
@@ -26,12 +26,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnPlayOnline = findViewById(R.id.btnPlayOnline);
-        btnPlayOnline.setOnClickListener(this);
+        btnPlayOnlineWhite = findViewById(R.id.btnPlayOnlineWhite);
+        btnPlayOnlineWhite.setOnClickListener(this);
+
+        btnPlayOnlineBlack = findViewById(R.id.btnPlayOnlineBlack);
+        btnPlayOnlineBlack.setOnClickListener(this);
 
         btnPlayOffline = findViewById(R.id.btnPlayOffline);
         btnPlayOffline.setOnClickListener(this);
-
 
         activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -61,16 +63,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v==btnPlayOffline)
+        if (v==btnPlayOnlineBlack)
         {
             Intent i = new Intent(this, GameActivity.class);
             i.putExtra("PlayerColor", "Black");
             activityResultLauncher.launch(i);
         }
-        if (v==btnPlayOnline)
+        if (v==btnPlayOnlineWhite)
         {
             Intent i = new Intent(this, GameActivity.class);
             i.putExtra("PlayerColor", "White");
+            activityResultLauncher.launch(i);
+        }
+
+        if (v==btnPlayOffline)
+        {
+            Intent i = new Intent(this, GameActivity.class);
+            i.putExtra("PlayerColor", "Offline");
             activityResultLauncher.launch(i);
         }
 

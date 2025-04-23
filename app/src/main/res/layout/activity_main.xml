@@ -19,19 +19,21 @@
         android:textSize="70dp"
         android:layout_marginTop="100dp" />
 
+
     <Button
-        android:id="@+id/btnPlayOnline"
+        android:id="@+id/btnPlayOnlineWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Play As White"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="300dp"
         android:textSize="40dp"
         android:backgroundTint="#4DFFFFFF"
         android:textColor="@color/black"></Button>
 
 
+
     <Button
-        android:id="@+id/btnPlayOffline"
+        android:id="@+id/btnPlayOnlineBlack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Play As Black"
@@ -39,4 +41,16 @@
         android:textSize="40dp"
         android:backgroundTint="#4DFFFFFF"
         android:textColor="@color/black"></Button>
+
+    <Button
+        android:id="@+id/btnPlayOffline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Play Offline"
+        android:layout_marginTop="10dp"
+        android:textSize="40dp"
+        android:backgroundTint="#4DFFFFFF"
+        android:textColor="@color/black"></Button>
+
+
 </LinearLayout>
