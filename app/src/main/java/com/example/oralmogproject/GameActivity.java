@@ -44,7 +44,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    public void resultToMainActivity(String color) // TODO win count + dialog + המשך
+    public void resultToMainActivity(String color)
     {
 
         Intent intent = new Intent();

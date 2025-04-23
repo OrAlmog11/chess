@@ -2,6 +2,9 @@ package com.example.oralmogproject;
 
 public class Move {
 
+    public Move() { // null move for Firebase
+    }
+
 
     public Move(int oldX, int oldY, int newX, int newY){
 
@@ -10,6 +13,8 @@ public class Move {
         this.newX = newX;
         this.newY = newY;
     }
+
+
 
     public int getOldX() {
         return oldX;
