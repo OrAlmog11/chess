@@ -23,7 +23,6 @@ public class GameActivity extends AppCompatActivity {
         String color = intent.getStringExtra("PlayerColor");
         Toast.makeText(this, "" + color, Toast.LENGTH_SHORT).show();
 
-        //setContentView(R.layout.activity_main);
         boardGame = new BoardGame(this, color);
         setContentView(boardGame);
 
@@ -52,7 +51,6 @@ public class GameActivity extends AppCompatActivity {
         intent.putExtra("ColorWin",color);
         setResult(RESULT_OK,intent);
         createDialog();
-//        finish();
     }
 
     public void setMove(Move move) {

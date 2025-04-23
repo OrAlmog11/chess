@@ -18,16 +18,13 @@ public class BoardGame extends View {
     private Square[][] squares;
     private int currX, currY, x1, y1, x2, y2;
     private Piece tempPiece;
-    private Pawn tempPawn;
-    private Bishop tempBishop;
+    private Pawn tempPawn;// בעל תכונות נפרדות מpieces ולכן יוצר עצמם משל עצמו על מנת לגשת אל התכונות
 
-    private Knight tempKnight;
 
-    private Rook tempRook;
+    private Rook tempRook; // בעל תכונות נפרדות מpieces ולכן יוצר עצמם משל עצמו על מנת לגשת אל התכונות
 
-    private Queen tempQueen;
 
-    private King tempKing;
+    private King tempKing; // בעל תכונות נפרדות מpieces ולכן יוצר עצמם משל עצמו על מנת לגשת אל התכונות
 
 
     private final int NUM_OF_SQUARES = 8;
@@ -54,9 +51,9 @@ public class BoardGame extends View {
         drawBoard(canvas);
     }
 
-    private void initPieces(Canvas canvas) {
+    private void initPieces(Canvas canvas) { // כאשר קוראים לפעולה, יוצר את החיילים, ושם את החיילים על הלוח
         int w = canvas.getWidth() / NUM_OF_SQUARES;
-        Bitmap wp = BitmapFactory.decodeResource(getResources(), R.drawable.white_pawn);
+        Bitmap wp = BitmapFactory.decodeResource(getResources(), R.drawable.white_pawn); // פיון לבן
         wp = Bitmap.createScaledBitmap(wp, w, w, true);
         Pawn wp1 = new Pawn(wp, "White", squares[1][0].getX(), squares[1][0].getY());
         Pawn wp2 = new Pawn(wp, "White", squares[1][1].getX(), squares[1][1].getY());
@@ -74,7 +71,7 @@ public class BoardGame extends View {
         squares[1][5].setPiece(wp6);
         squares[1][6].setPiece(wp7);
         squares[1][7].setPiece(wp8);
-        Bitmap bp = BitmapFactory.decodeResource(getResources(), R.drawable.black_pawn);
+        Bitmap bp = BitmapFactory.decodeResource(getResources(), R.drawable.black_pawn); // פיון שחור
         bp = Bitmap.createScaledBitmap(bp, w, w, true);
         Pawn bp1 = new Pawn(bp, "Black", squares[6][0].getX(), squares[6][0].getY());
         Pawn bp2 = new Pawn(bp, "Black", squares[6][1].getX(), squares[6][1].getY());
@@ -92,53 +89,53 @@ public class BoardGame extends View {
         squares[6][5].setPiece(bp6);
         squares[6][6].setPiece(bp7);
         squares[6][7].setPiece(bp8);
-        Bitmap wr = BitmapFactory.decodeResource(getResources(), R.drawable.white_rook);
+        Bitmap wr = BitmapFactory.decodeResource(getResources(), R.drawable.white_rook); // צריח לבן
         wr = Bitmap.createScaledBitmap(wr, w, w, true);
         Rook wr1 = new Rook(wr, "White", squares[0][0].getX(), squares[0][0].getY());
         Rook wr2 = new Rook(wr, "White", squares[0][7].getX(), squares[0][7].getY());
         squares[0][0].setPiece(wr1);
         squares[0][7].setPiece(wr2);
-        Bitmap br = BitmapFactory.decodeResource(getResources(), R.drawable.black_rook);
+        Bitmap br = BitmapFactory.decodeResource(getResources(), R.drawable.black_rook); // צריח שחור
         br = Bitmap.createScaledBitmap(br, w, w, true);
         Rook br1 = new Rook(br, "Black", squares[7][0].getX(), squares[7][0].getY());
         Rook br2 = new Rook(br, "Black", squares[7][7].getX(), squares[7][7].getY());
         squares[7][0].setPiece(br1);
         squares[7][7].setPiece(br2);
-        Bitmap wk = BitmapFactory.decodeResource(getResources(), R.drawable.white_king);
+        Bitmap wk = BitmapFactory.decodeResource(getResources(), R.drawable.white_king); // מלך לבן
         wk = Bitmap.createScaledBitmap(wk, w, w, true);
         King Wk = new King(wk, "White", squares[0][3].getX(), squares[0][3].getY());
         squares[0][3].setPiece(Wk);
-        Bitmap bk = BitmapFactory.decodeResource(getResources(), R.drawable.black_king);
+        Bitmap bk = BitmapFactory.decodeResource(getResources(), R.drawable.black_king); // מלך שחור
         bk = Bitmap.createScaledBitmap(bk, w, w, true);
         King Bk = new King(bk, "Black", squares[7][3].getX(), squares[7][3].getY());
         squares[7][3].setPiece(Bk);
-        Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
+        Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen); // מלכה לבנה
         wq = Bitmap.createScaledBitmap(wq, w, w, true);
         Queen Wq = new Queen(wq, "White", squares[0][4].getX(), squares[0][4].getY());
         squares[0][4].setPiece(Wq);
-        Bitmap bq = BitmapFactory.decodeResource(getResources(), R.drawable.black_queen);
+        Bitmap bq = BitmapFactory.decodeResource(getResources(), R.drawable.black_queen); // מלכה שחורה
         bq = Bitmap.createScaledBitmap(bq, w, w, true);
         Queen Bq = new Queen(bq, "Black", squares[7][4].getX(), squares[7][4].getY());
         squares[7][4].setPiece(Bq);
-        Bitmap wk2 = BitmapFactory.decodeResource(getResources(), R.drawable.white_knight);//white knight = wk2
+        Bitmap wk2 = BitmapFactory.decodeResource(getResources(), R.drawable.white_knight); // פרש לבן
         wk2 = Bitmap.createScaledBitmap(wk2, w, w, true);
         Knight wkn1 = new Knight(wk2, "White", squares[0][1].getX(), squares[0][1].getY());
         Knight wkn2 = new Knight(wk2, "White", squares[0][6].getX(), squares[0][6].getY());
         squares[0][1].setPiece(wkn1);
         squares[0][6].setPiece(wkn2);
-        Bitmap bk2 = BitmapFactory.decodeResource(getResources(), R.drawable.black_knight);//black knight = bk2
+        Bitmap bk2 = BitmapFactory.decodeResource(getResources(), R.drawable.black_knight); // פרש שחור
         bk2 = Bitmap.createScaledBitmap(bk2, w, w, true);
         Knight bkn1 = new Knight(bk2, "Black", squares[7][1].getX(), squares[7][1].getY());
         Knight bkn2 = new Knight(bk2, "Black", squares[7][6].getX(), squares[7][6].getY());
         squares[7][1].setPiece(bkn1);
         squares[7][6].setPiece(bkn2);
-        Bitmap wb = BitmapFactory.decodeResource(getResources(), R.drawable.white_bishop);//black knight = bk2
+        Bitmap wb = BitmapFactory.decodeResource(getResources(), R.drawable.white_bishop); // רץ לבן
         wb = Bitmap.createScaledBitmap(wb, w, w, true);
         Bishop wb1 = new Bishop(wb, "White", squares[0][2].getX(), squares[0][2].getY());
         Bishop wb2 = new Bishop(wb, "White", squares[0][5].getX(), squares[0][5].getY());
         squares[0][2].setPiece(wb1);
         squares[0][5].setPiece(wb2);
-        Bitmap bb = BitmapFactory.decodeResource(getResources(), R.drawable.black_bishop);//black knight = bk2
+        Bitmap bb = BitmapFactory.decodeResource(getResources(), R.drawable.black_bishop); // רץ שחור
         bb = Bitmap.createScaledBitmap(bb, w, w, true);
         Bishop bb1 = new Bishop(bb, "Black", squares[7][2].getX(), squares[7][2].getY());
         Bishop bb2 = new Bishop(bb, "Black", squares[7][5].getX(), squares[7][5].getY());
@@ -188,35 +185,31 @@ public class BoardGame extends View {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event) { // כאשר לוחצים על המסך
         int xloc = (int) event.getX();
         int yloc = (int) event.getY();
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if ((xloc > 0 && xloc < h * NUM_OF_SQUARES) && (yloc > 0 && yloc < h * NUM_OF_SQUARES)) {
+            if ((xloc > 0 && xloc < h * NUM_OF_SQUARES) && (yloc > 0 && yloc < h * NUM_OF_SQUARES)) { // בודק אם לוחצים על הלוח
                 currX = xloc;
                 currY = yloc;
-                userTouchSquareBefore();
+                userTouchSquareBefore(); // בודק באיזו משבצת נגע המשתמש
                 if (squares[x1][y1].getPiece() != null) {
-                    tempPiece = squares[x1][y1].getPiece();
+                    tempPiece = squares[x1][y1].getPiece(); // מגדיר חתיכה (חייל) זמני
                 } else {
                     tempPiece = null;
                 }
             }
         }
         if (event.getAction() == MotionEvent.ACTION_MOVE) {
-//            if (squares[x1][y1].getPiece()!= null) {
-//                squares[x1][y1].getPiece().setX((int) event.getX());
-//                squares[x1][y1].getPiece().setY((int) event.getY());
-//                invalidate();
-//            }
+
         }
         if (event.getAction() == MotionEvent.ACTION_UP) {
             if ((xloc > 0 && xloc < h * NUM_OF_SQUARES) && (yloc > 0 && yloc < h * NUM_OF_SQUARES)) {
                 currX = xloc;
                 currY = yloc;
-                userTouchSquareAfter();
+                userTouchSquareAfter(); // בודק באיזו משבצת נגע המשתמש
             }
-            updatePieceAfterRelease();
+            updatePieceAfterRelease(); // בודק את הלוגיקה והאם המהלך הגיוני. פועל בהתאם.
         }
 
 
@@ -254,22 +247,19 @@ public class BoardGame extends View {
     private void updatePieceAfterRelease() // בודק אם המהלך חוקי ואם כן משנה בהתאם ואם לא מחזיר את המצב לקדמותו
     {
         if (tempPiece != null) {
-            if (tempPiece.getColor().equals(turn) && turn.equals("White") && turncolor.equals(turn)) {
+            if (tempPiece.getColor().equals(turn) && turn.equals("White") && turncolor.equals(turn)) { // בודק אם צבע החייל שהוזז תואם לצבע התור
                 if (tempPiece != null) {
                     if (tempPiece instanceof Pawn) {
                         tempPawn = (Pawn) tempPiece;
                         whitepawn();
                     } else if (tempPiece instanceof Bishop) {
-                        tempBishop = (Bishop) tempPiece;
                         whitebishop();
                     } else if (tempPiece instanceof Knight) {
-                        tempKnight = (Knight) tempPiece;
                         whiteknight();
                     } else if (tempPiece instanceof Rook) {
                         tempRook = (Rook) tempPiece;
                         whiterook();
                     } else if (tempPiece instanceof Queen) {
-                        tempQueen = (Queen) tempPiece;
                         whitequeen();
                     } else if (tempPiece instanceof King) {
                         tempKing = (King) tempPiece;
@@ -283,16 +273,13 @@ public class BoardGame extends View {
                         tempPawn = (Pawn) tempPiece;
                         blackpawn();
                     } else if (tempPiece instanceof Bishop) {
-                        tempBishop = (Bishop) tempPiece;
                         blackbishop();
                     } else if (tempPiece instanceof Knight) {
-                        tempKnight = (Knight) tempPiece;
                         blackknight();
                     } else if (tempPiece instanceof Rook) {
                         tempRook = (Rook) tempPiece;
                         blackrook();
                     } else if (tempPiece instanceof Queen) {
-                        tempQueen = (Queen) tempPiece;
                         blackqueen();
                     } else if (tempPiece instanceof King) {
                         tempKing = (King) tempPiece;
@@ -344,13 +331,11 @@ public class BoardGame extends View {
     }
     private void whitepawnfirstmove() {
         tempPawn.setFirstMove(false);
-//        turn = "Black";
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
     }
     private void whitepawnmove() {
-//        turn = "Black";
         if(x2==7)
         {
             Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
@@ -401,13 +386,11 @@ public class BoardGame extends View {
     }
     private void blackpawnfirstmove() {
         tempPawn.setFirstMove(false);
-//        turn = "White";
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
     }
     private void blackpawnmove() {
-//        turn = "White";
         if(x2==0)
         {
             Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
@@ -456,7 +439,6 @@ public class BoardGame extends View {
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
-//        turn = "Black";
     }
 
     private void blackknight() {
@@ -495,7 +477,6 @@ public class BoardGame extends View {
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
-//        turn = "White";
     }
 
     private void whitebishop() {
@@ -536,7 +517,6 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-//                turn = "Black";
             }
             else {
                 squares[x1][y1].setPiece(tempPiece);
@@ -582,7 +562,6 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-//                turn = "White";
             }
             else {
                 squares[x1][y1].setPiece(tempPiece);
@@ -629,7 +608,6 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-//                turn = "Black";
                 tempRook.setFirstMove(false);
             }
             else {
@@ -651,11 +629,8 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
                         turn = "White";
-//                        squares[x1][y1].setPiece(null);
-//                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(0,3,0,5);
                         ((GameActivity)context).setNewMoveToFb(newmove);
-//                        squares[x2][y2+1].setPiece(tempKing);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -675,11 +650,8 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
                         turn = "White";
-//                        squares[x1][y1].setPiece(null);
-//                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(0,3,0,1);
                         ((GameActivity)context).setNewMoveToFb(newmove);
-//                        squares[x2][y2-1].setPiece(tempKing);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -732,7 +704,6 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-//                turn = "White";
                 tempRook.setFirstMove(false);
             }
             else {
@@ -754,11 +725,8 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
                         turn = "Black";
-//                        squares[x1][y1].setPiece(null);
-//                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(7,3,7,5);
                         ((GameActivity)context).setNewMoveToFb(newmove);
-//                        squares[x2][y2+1].setPiece(tempKing);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -778,11 +746,8 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
                         turn = "Black";
-//                        squares[x1][y1].setPiece(null);
-//                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(7,3,7,1);
                         ((GameActivity)context).setNewMoveToFb(newmove);
-//                        squares[x2][y2-1].setPiece(tempKing);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -836,7 +801,6 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-//                turn = "Black";
             }
             else {
                 squares[x1][y1].setPiece(tempPiece);
@@ -884,7 +848,6 @@ public class BoardGame extends View {
                 Move move = new Move(x1,y1,x2,y2);
                 ((GameActivity)context).setNewMoveToFb(move);
                 ((GameActivity)context).setSound();
-//                turn = "White";
             }
             else {
                 squares[x1][y1].setPiece(tempPiece);
@@ -933,11 +896,8 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
                         turn = "White";
-//                        squares[x1][y1].setPiece(null);
-//                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(0,7,0,4);
                         ((GameActivity)context).setNewMoveToFb(newmove);
-//                        squares[x2][y2+1].setPiece(tempKing);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -957,11 +917,8 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
                         turn = "White";
-//                        squares[x1][y1].setPiece(null);
-//                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(0,0,0,2);
                         ((GameActivity)context).setNewMoveToFb(newmove);
-//                        squares[x2][y2+1].setPiece(tempKing);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -981,7 +938,6 @@ public class BoardGame extends View {
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
-//        turn = "Black";
         tempKing.setFirstMove(false);
     }
 
@@ -1026,11 +982,8 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
                         turn = "Black";
-//                        squares[x1][y1].setPiece(null);
-//                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(7,7,7,4);
                         ((GameActivity)context).setNewMoveToFb(newmove);
-//                        squares[x2][y2+1].setPiece(tempKing);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -1050,11 +1003,8 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
                         turn = "Black";
-//                        squares[x1][y1].setPiece(null);
-//                        squares[x2][y2].setPiece(tempPiece);
                         Move newmove = new Move(7,0,7,2);
                         ((GameActivity)context).setNewMoveToFb(newmove);
-//                        squares[x2][y2+1].setPiece(tempKing);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
                     }
@@ -1074,7 +1024,6 @@ public class BoardGame extends View {
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
-//        turn = "White";
         tempKing.setFirstMove(false);
     }
 
@@ -1102,13 +1051,11 @@ public class BoardGame extends View {
         invalidate();
     }
     private void whitewon() {
-        //Dialog(); TODO DIALOG
         firstTime = true;
         invalidate();
         ((GameActivity)context).resultToMainActivity("White");
     }
     private void blackwon() {
-        //Dialog(); TODO DIALOG
         firstTime = true;
         invalidate();
         ((GameActivity)context).resultToMainActivity("Black");

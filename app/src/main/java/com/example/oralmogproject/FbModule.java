@@ -23,14 +23,12 @@ public class FbModule
 
     private void initFirebaseListener() {
         // הפונקציה יוצרת מאזין ב FireBase
-        //
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("play");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Move move = snapshot.getValue(Move.class);
-                //Toast.makeText(context, "onDataChange " + play, Toast.LENGTH_SHORT).show();
                 if(move != null){
                     ((GameActivity)context).setMove(move);
                 }

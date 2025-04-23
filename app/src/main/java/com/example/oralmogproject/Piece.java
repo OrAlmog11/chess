@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 public class Piece {
     protected Bitmap bitmap;
     protected String color;
-    protected String kind;
+
 
 
 
@@ -22,29 +22,11 @@ public class Piece {
         this.y = y;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
 
     public String getColor(){
         return this.color;
     }
 
-    public String getKind() {
-        return kind;
-    }
     public void draw(Canvas canvas, int x, int y)
     {
         canvas.drawBitmap(bitmap,x,y,null);

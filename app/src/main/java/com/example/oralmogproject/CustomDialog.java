@@ -18,9 +18,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         this.context = context;
 
         btnOk = findViewById(R.id.btnOk);
-//        btnNo = findViewById(R.id.btnNo);
         btnOk.setOnClickListener(this);
-//        btnNo.setOnClickListener(this);
     }
 
 

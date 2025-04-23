@@ -4,16 +4,20 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 
-public class Square extends Shape{
+public class Square{
     private int w,h;  // w = width h = high
     private Paint p;
+    int x,y, color;
 
     Piece piece;
 
     public Square(int x, int y, int w, int h, int color) {
-        super(x, y, color);
+//        super(x, y, color);
+        this.x = x;
+        this.y = y;
         this.w = w;
         this.h = h;
+        this.color = color;
 
         p = new Paint();
         p.setColor(color);
@@ -34,13 +38,7 @@ public class Square extends Shape{
         return piece;
     }
 
-    public String takenByColor(){
-        if (this.piece == null)
-            return null;
-        else
-            return this.piece.getColor();
 
-    }
 
     public void draw(Canvas canvas)
     {
