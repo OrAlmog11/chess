@@ -18,13 +18,13 @@ public class BoardGame extends View {
     private Square[][] squares;
     private int currX, currY, x1, y1, x2, y2;
     private Piece tempPiece;
-    private Pawn tempPawn;// בעל תכונות נפרדות מpieces ולכן יוצר עצמם משל עצמו על מנת לגשת אל התכונות
+    private Pawn tempPawn;// בעל תכונות נפרדות מpieces ולכן יוצר עצם משל עצמו על מנת לגשת אל התכונות
 
 
-    private Rook tempRook; // בעל תכונות נפרדות מpieces ולכן יוצר עצמם משל עצמו על מנת לגשת אל התכונות
+    private Rook tempRook; // בעל תכונות נפרדות מpieces ולכן יוצר עצם משל עצמו על מנת לגשת אל התכונות
 
 
-    private King tempKing; // בעל תכונות נפרדות מpieces ולכן יוצר עצמם משל עצמו על מנת לגשת אל התכונות
+    private King tempKing; // בעל תכונות נפרדות מpieces ולכן יוצר עצם משל עצמו על מנת לגשת אל התכונות
 
 
     private final int NUM_OF_SQUARES = 8;
@@ -615,7 +615,8 @@ public class BoardGame extends View {
                 squares[x1][y1].setPiece(tempPiece);
             }
         }
-        else if (squares[x2][y2].getPiece() instanceof King && squares[x2][y2].getPiece().getColor()=="White") {
+        else if (squares[x2][y2].getPiece() instanceof King && squares[x2][y2].getPiece().getColor()=="White") // בודק האם אפשר לעשות הצרחה ואם כן יעשה זאת
+        {
             tempKing = (King) squares[x2][y2].getPiece();
             if (tempKing.getisFirstMove() == true && tempRook.getisFirstMove()==true){
                 if(x2-x1==0&&y1-y2==4)
@@ -711,7 +712,8 @@ public class BoardGame extends View {
                 squares[x1][y1].setPiece(tempPiece);
             }
         }
-        else if (squares[x2][y2].getPiece() instanceof King && squares[x2][y2].getPiece().getColor()=="Black") {
+        else if (squares[x2][y2].getPiece() instanceof King && squares[x2][y2].getPiece().getColor()=="Black") // בודק האם אפשר לעשות הצרחה ואם כן יעשה זאת
+        {
             tempKing = (King) squares[x2][y2].getPiece();
             if (tempKing.getisFirstMove() == true && tempRook.getisFirstMove() == true){
                 if(x2-x1==0&&y1-y2==4)
@@ -882,7 +884,8 @@ public class BoardGame extends View {
         else if (x2-x1==-1&&y2-y1==-1&&(squares[x2][y2].getPiece()==null||squares[x2][y2].getPiece().getColor()=="Black")) {
             whitekingmove();
         }
-        else if (squares[x2][y2].getPiece() instanceof Rook && squares[x2][y2].getPiece().getColor()=="White") {
+        else if (squares[x2][y2].getPiece() instanceof Rook && squares[x2][y2].getPiece().getColor()=="White") // בודק האם אפשר לעשות הצרחה ואם כן יעשה זאת
+        {
             tempRook = (Rook) squares[x2][y2].getPiece();
             if (tempKing.getisFirstMove() == true && tempRook.getisFirstMove() == true){
                 if(x2-x1==0&&y2-y1==4)
@@ -968,7 +971,8 @@ public class BoardGame extends View {
         else if (x2-x1==-1&&y2-y1==-1&&(squares[x2][y2].getPiece()==null||squares[x2][y2].getPiece().getColor()=="White")) {
             blackkingmove();
         }
-        else if (squares[x2][y2].getPiece() instanceof Rook && squares[x2][y2].getPiece().getColor()=="Black") {
+        else if (squares[x2][y2].getPiece() instanceof Rook && squares[x2][y2].getPiece().getColor()=="Black") // בודק האם אפשר לעשות הצרחה ואם כן יעשה זאת
+        {
             tempRook = (Rook) squares[x2][y2].getPiece();
             if (tempKing.getisFirstMove() == true && tempRook.getisFirstMove() == true){
                 if(x2-x1==0&&y2-y1==4)
