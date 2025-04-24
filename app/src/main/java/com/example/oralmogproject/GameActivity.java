@@ -13,7 +13,7 @@ public class GameActivity extends AppCompatActivity {
     FbModule fbModule;
     private BoardGame boardGame;
     private SoundPool soundPool;
-    int sound1;
+    int sound1,sound2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,10 @@ public class GameActivity extends AppCompatActivity {
         soundPool = new SoundPool(3, AudioManager.STREAM_MUSIC,0);
 
         sound1 = soundPool.load(this,R.raw.zapsplat_cartoon3,1);
+
+        sound2 = soundPool.load(this,R.raw.zapsplat_cartoon3,1);
+
+
 
 
     }
@@ -60,6 +64,11 @@ public class GameActivity extends AppCompatActivity {
     public void setSound()
     {
         soundPool.play(sound1,1,1,0,0,1);
+    }
+
+    public void setSoundWin()
+    {
+        soundPool.play(sound1,1,1,0,3,1);
     }
 
     public void setNewMoveToFb(Move move) {

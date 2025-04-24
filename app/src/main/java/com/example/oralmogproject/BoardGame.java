@@ -1058,11 +1058,13 @@ public class BoardGame extends View {
     private void whitewon() {
         firstTime = true;
         invalidate();
+        ((GameActivity)context).setSoundWin();
         ((GameActivity)context).resultToMainActivity("White");
     }
     private void blackwon() {
         firstTime = true;
         invalidate();
+        ((GameActivity)context).setSoundWin();
         ((GameActivity)context).resultToMainActivity("Black");
     }
 
