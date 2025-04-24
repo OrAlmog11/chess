@@ -24,9 +24,9 @@
         android:id="@+id/btnPlayOnlineWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Play As White"
+        android:text="Play Online As White"
         android:layout_marginTop="300dp"
-        android:textSize="40dp"
+        android:textSize="38dp"
         android:backgroundTint="#4DFFFFFF"
         android:textColor="@color/black"></Button>
 
@@ -36,10 +36,9 @@
         android:id="@+id/btnPlayOnlineBlack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Play As Black"
+        android:text="Play Online As Black"
         android:layout_marginTop="10dp"
-        android:textSize="40dp"
-        android:backgroundTint="#4DFFFFFF"
+        android:textSize="38dp"        android:backgroundTint="#4DFFFFFF"
         android:textColor="@color/black"></Button>
 
     <Button
