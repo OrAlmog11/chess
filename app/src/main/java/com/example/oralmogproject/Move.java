@@ -2,6 +2,8 @@ package com.example.oralmogproject;
 
 public class Move {
 
+    private int oldX,oldY,newX,newY;
+
     public Move() { // null move for Firebase
     }
 
@@ -32,7 +34,6 @@ public class Move {
         return newY;
     }
 
-    private int oldX,oldY,newX,newY;
 
 
 
