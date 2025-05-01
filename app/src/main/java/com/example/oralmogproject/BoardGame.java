@@ -1041,7 +1041,7 @@ public class BoardGame extends View {
             squares[beforeX][beforeY].setPiece(null);
 
         }
-        else if (afterX==0 && squares[beforeX][beforeY].getPiece() instanceof Pawn && squares[beforeX][beforeY].getPiece().getColor().equals("White"))
+        else if (afterX==0 && squares[beforeX][beforeY].getPiece() instanceof Pawn && squares[beforeX][beforeY].getPiece().getColor().equals("Black"))
         {
             Bitmap bq = BitmapFactory.decodeResource(getResources(), R.drawable.black_queen);
             bq = Bitmap.createScaledBitmap(bq, w, w, true);
