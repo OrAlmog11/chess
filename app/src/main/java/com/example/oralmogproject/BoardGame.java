@@ -1045,7 +1045,7 @@ public class BoardGame extends View {
         {
             Bitmap bq = BitmapFactory.decodeResource(getResources(), R.drawable.black_queen);
             bq = Bitmap.createScaledBitmap(bq, w, w, true);
-            squares[afterX][afterY].setPiece(new Queen(bq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
+            squares[afterX][afterY].setPiece(new Queen(bq, "Black", squares[x2][y2].getX(), squares[x2][y2].getY()));
             squares[beforeX][beforeY].setPiece(null);
         }
         else {
