@@ -337,12 +337,6 @@ public class BoardGame extends View {
         ((GameActivity)context).setSound();
     }
     private void whitepawnmove() {
-        if(x2==7)
-        {
-            Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
-            wq = Bitmap.createScaledBitmap(wq, w, w, true);
-            squares[x2][y2].setPiece(new Queen(wq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
-        }
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
@@ -392,12 +386,6 @@ public class BoardGame extends View {
         ((GameActivity)context).setSound();
     }
     private void blackpawnmove() {
-        if(x2==0)
-        {
-            Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
-            wq = Bitmap.createScaledBitmap(wq, w, w, true);
-            squares[x2][y2].setPiece(new Queen(wq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
-        }
         Move move = new Move(x1,y1,x2,y2);
         ((GameActivity)context).setNewMoveToFb(move);
         ((GameActivity)context).setSound();
@@ -1045,8 +1033,25 @@ public class BoardGame extends View {
         {
             blackwon();
         }
-        squares[afterX][afterY].setPiece(squares[beforeX][beforeY].getPiece());
-        squares[beforeX][beforeY].setPiece(null);
+        if(afterX==7 && squares[beforeX][beforeY].getPiece() instanceof Pawn && squares[beforeX][beforeY].getPiece().getColor().equals("White"))
+        {
+            Bitmap wq = BitmapFactory.decodeResource(getResources(), R.drawable.white_queen);
+            wq = Bitmap.createScaledBitmap(wq, w, w, true);
+            squares[afterX][afterY].setPiece(new Queen(wq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
+            squares[beforeX][beforeY].setPiece(null);
+
+        }
+        else if (afterX==0 && squares[beforeX][beforeY].getPiece() instanceof Pawn && squares[beforeX][beforeY].getPiece().getColor().equals("White"))
+        {
+            Bitmap bq = BitmapFactory.decodeResource(getResources(), R.drawable.black_queen);
+            bq = Bitmap.createScaledBitmap(bq, w, w, true);
+            squares[afterX][afterY].setPiece(new Queen(bq, "White", squares[x2][y2].getX(), squares[x2][y2].getY()));
+            squares[beforeX][beforeY].setPiece(null);
+        }
+        else {
+            squares[afterX][afterY].setPiece(squares[beforeX][beforeY].getPiece());
+            squares[beforeX][beforeY].setPiece(null);
+        }
         if (turn.equals("White")){
             turn = "Black";
         }
