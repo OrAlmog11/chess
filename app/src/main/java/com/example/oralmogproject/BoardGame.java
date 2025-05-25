@@ -620,9 +620,10 @@ public class BoardGame extends View {
                         ((GameActivity)context).setSound();
                         Move newmove = new Move(0,3,0,5);
                         ((GameActivity)context).setNewMoveToFb(newmove);
+                        Move samemove = new Move(0,5,0,5);
+                        ((GameActivity)context).setNewMoveToFb(samemove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
-                        turn = "Black";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -641,9 +642,11 @@ public class BoardGame extends View {
                         ((GameActivity)context).setSound();
                         Move newmove = new Move(0,3,0,1);
                         ((GameActivity)context).setNewMoveToFb(newmove);
+                        Move samemove = new Move(0,1,0,1);
+                        ((GameActivity)context).setNewMoveToFb(samemove);
+
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
-                        turn = "Black";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -717,9 +720,10 @@ public class BoardGame extends View {
                         ((GameActivity)context).setSound();
                         Move newmove = new Move(7,3,7,5);
                         ((GameActivity)context).setNewMoveToFb(newmove);
+                        Move samemove = new Move(7,5,7,5);
+                        ((GameActivity)context).setNewMoveToFb(samemove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
-                        turn = "White";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -738,9 +742,10 @@ public class BoardGame extends View {
                         ((GameActivity)context).setSound();
                         Move newmove = new Move(7,3,7,1);
                         ((GameActivity)context).setNewMoveToFb(newmove);
+                        Move samemove = new Move(7,1,7,1);
+                        ((GameActivity)context).setNewMoveToFb(samemove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
-                        turn = "White";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -889,9 +894,10 @@ public class BoardGame extends View {
                         ((GameActivity)context).setSound();
                         Move newmove = new Move(0,7,0,4);
                         ((GameActivity)context).setNewMoveToFb(newmove);
+                        Move samemove = new Move(0,4,0,4);
+                        ((GameActivity)context).setNewMoveToFb(samemove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
-                        turn = "Black";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -910,9 +916,10 @@ public class BoardGame extends View {
                         ((GameActivity)context).setSound();
                         Move newmove = new Move(0,0,0,2);
                         ((GameActivity)context).setNewMoveToFb(newmove);
+                        Move samemove = new Move(0,2,0,2);
+                        ((GameActivity)context).setNewMoveToFb(samemove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
-                        turn = "Black";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -976,10 +983,10 @@ public class BoardGame extends View {
                         ((GameActivity)context).setSound();
                         Move newmove = new Move(7,7,7,4);
                         ((GameActivity)context).setNewMoveToFb(newmove);
+                        Move samemove = new Move(7,4,7,4);
+                        ((GameActivity)context).setNewMoveToFb(samemove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
-                        turn = "White";
-
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -998,9 +1005,10 @@ public class BoardGame extends View {
                         ((GameActivity)context).setSound();
                         Move newmove = new Move(7,0,7,2);
                         ((GameActivity)context).setNewMoveToFb(newmove);
+                        Move samemove = new Move(7,1,7,1);
+                        ((GameActivity)context).setNewMoveToFb(samemove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
-                        turn = "White";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -1050,8 +1058,11 @@ public class BoardGame extends View {
             squares[beforeX][beforeY].setPiece(null);
         }
         else {
-            squares[afterX][afterY].setPiece(squares[beforeX][beforeY].getPiece());
-            squares[beforeX][beforeY].setPiece(null);
+            if (!(afterX==beforeX && afterY==beforeY))
+            {
+                squares[afterX][afterY].setPiece(squares[beforeX][beforeY].getPiece());
+                squares[beforeX][beforeY].setPiece(null);
+            }
         }
         if (turn.equals("White")){
             turn = "Black";
