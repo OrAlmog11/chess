@@ -622,6 +622,7 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
+                        turn = "Black";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -642,6 +643,7 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
+                        turn = "Black";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -717,6 +719,7 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
+                        turn = "White";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -737,6 +740,7 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
+                        turn = "White";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -887,6 +891,7 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
+                        turn = "Black";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -907,6 +912,7 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
+                        turn = "Black";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -972,6 +978,8 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
+                        turn = "White";
+
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
@@ -992,6 +1000,7 @@ public class BoardGame extends View {
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
+                        turn = "White";
                     }
                     else {
                         squares[x1][y1].setPiece(tempPiece);
