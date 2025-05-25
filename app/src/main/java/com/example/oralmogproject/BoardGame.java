@@ -618,7 +618,6 @@ public class BoardGame extends View {
                         Move move = new Move(x1,y1,x2,y2+1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
-                        turn = "White";
                         Move newmove = new Move(0,3,0,5);
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
@@ -639,7 +638,6 @@ public class BoardGame extends View {
                         Move move = new Move(x1,y1,x2,y2-1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
-                        turn = "White";
                         Move newmove = new Move(0,3,0,1);
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
@@ -715,7 +713,6 @@ public class BoardGame extends View {
                         Move move = new Move(x1,y1,x2,y2+1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
-                        turn = "Black";
                         Move newmove = new Move(7,3,7,5);
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
@@ -736,7 +733,6 @@ public class BoardGame extends View {
                         Move move = new Move(x1,y1,x2,y2-1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
-                        turn = "Black";
                         Move newmove = new Move(7,3,7,1);
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
@@ -887,7 +883,6 @@ public class BoardGame extends View {
                         Move move = new Move(0,3,0,5);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
-                        turn = "White";
                         Move newmove = new Move(0,7,0,4);
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
@@ -908,7 +903,6 @@ public class BoardGame extends View {
                         Move move = new Move(0,3,0,1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
-                        turn = "White";
                         Move newmove = new Move(0,0,0,2);
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
@@ -974,7 +968,6 @@ public class BoardGame extends View {
                         Move move = new Move(7,3,7,5);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
-                        turn = "Black";
                         Move newmove = new Move(7,7,7,4);
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
@@ -995,7 +988,6 @@ public class BoardGame extends View {
                         Move move = new Move(7,3,7,1);
                         ((GameActivity)context).setNewMoveToFb(move);
                         ((GameActivity)context).setSound();
-                        turn = "Black";
                         Move newmove = new Move(7,0,7,2);
                         ((GameActivity)context).setNewMoveToFb(newmove);
                         tempKing.setFirstMove(false);
