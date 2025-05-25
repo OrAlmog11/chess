@@ -1005,7 +1005,7 @@ public class BoardGame extends View {
                         ((GameActivity)context).setSound();
                         Move newmove = new Move(7,0,7,2);
                         ((GameActivity)context).setNewMoveToFb(newmove);
-                        Move samemove = new Move(7,1,7,1);
+                        Move samemove = new Move(7,2,7,2);
                         ((GameActivity)context).setNewMoveToFb(samemove);
                         tempKing.setFirstMove(false);
                         tempRook.setFirstMove(false);
